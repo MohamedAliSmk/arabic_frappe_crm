@@ -56,3 +56,16 @@ const descriptionClasses = computed(() => {
   ]
 })
 </script>
+
+<style scoped>
+/* Add RTL support for Arabic text in FormattedInput */
+:deep(.text-input) {
+  direction: rtl;
+  text-align: right;
+}
+
+:deep(.text-input input) {
+  direction: rtl;
+  text-align: right;
+}
+</style>

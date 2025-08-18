@@ -113,7 +113,7 @@
   {
    "fieldname": "website",
    "fieldtype": "Data",
-   "label": "Website"
+   "label": "الموقع"
   },
   {
    "fieldname": "mobile_no",
@@ -149,19 +149,19 @@
   {
    "fieldname": "lead_owner",
    "fieldtype": "Link",
-   "label": "Lead Owner",
+   "label": "مالك الزبون المحتمل",
    "options": "User"
   },
   {
    "fieldname": "source",
    "fieldtype": "Link",
-   "label": "Source",
+   "label": "المصدر",
    "options": "CRM Lead Source"
   },
   {
    "fieldname": "industry",
    "fieldtype": "Link",
-   "label": "Industry",
+   "label": "صناعة",
    "options": "CRM Industry"
   },
   {
@@ -180,7 +180,7 @@
   {
    "fieldname": "job_title",
    "fieldtype": "Data",
-   "label": "Job Title"
+   "label": "المسمى الوظيفي"
   },
   {
    "fieldname": "organization_tab",
@@ -191,7 +191,7 @@
   {
    "fieldname": "organization",
    "fieldtype": "Data",
-   "label": "Organization"
+   "label": "منظمة"
   },
   {
    "default": "0",
@@ -277,7 +277,7 @@
   {
    "fieldname": "territory",
    "fieldtype": "Link",
-   "label": "Territory",
+   "label": "إقليم",
    "options": "CRM Territory"
   },
   {
