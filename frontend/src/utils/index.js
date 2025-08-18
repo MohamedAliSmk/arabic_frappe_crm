@@ -16,18 +16,18 @@ export function formatTime(seconds) {
   let formattedTime = ''
 
   if (days > 0) {
-    formattedTime += `${days}d `
+    formattedTime += __('{0} d', [days]) + ' '
   }
 
   if (hours > 0 || days > 0) {
-    formattedTime += `${hours}h `
+    formattedTime += __('{0} h', [hours]) + ' '
   }
 
   if (minutes > 0 || hours > 0 || days > 0) {
-    formattedTime += `${minutes}m `
+    formattedTime += __('{0} m', [minutes]) + ' '
   }
 
-  formattedTime += `${remainingSeconds}s`
+  formattedTime += __('{0} s', [remainingSeconds])
 
   return formattedTime.trim()
 }

@@ -546,11 +546,11 @@ msgstr ""
 
 #: crm/api/dashboard.py:410
 msgid "Avg. deal value"
-msgstr ""
+msgstr "متوسط قيمة الصفقات"
 
 #: crm/api/dashboard.py:237
 msgid "Avg. ongoing deal value"
-msgstr ""
+msgstr "متوسط قيمة الصفقات الجارية"
 
 #: crm/api/dashboard.py:517
 msgid "Avg. time to close a deal"
@@ -559,6 +559,30 @@ msgstr "متوسط الوقت لإغلاق الصفقة"
 #: crm/api/dashboard.py:463
 msgid "Avg. time to close a lead"
 msgstr "متوسط الوقت لإغلاق العميل المحتمل"
+
+#: crm/api/dashboard.py:465
+msgid " days"
+msgstr " أيام"
+
+#: frontend/src/pages/Dashboard.vue:207
+msgid "Last 7 Days"
+msgstr "آخر 7 أيام"
+
+#: frontend/src/pages/Dashboard.vue:214
+msgid "Last 30 Days"
+msgstr "آخر 30 يوم"
+
+#: frontend/src/pages/Dashboard.vue:221
+msgid "Last 60 Days"
+msgstr "آخر 60 يوم"
+
+#: frontend/src/pages/Dashboard.vue:228
+msgid "Last 90 Days"
+msgstr "آخر 90 يوم"
+
+#: frontend/src/pages/Dashboard.vue:235
+msgid "Custom Range"
+msgstr "نطاق مخصص"
 
 #: crm/api/dashboard.py:353
 msgid "Avg. won deal value"
@@ -5351,6 +5375,10 @@ msgid "in {0} days"
 msgstr "في {0} أيام"
 
 #: frontend/src/utils/index.js:154
+msgid "{0} days"
+msgstr "{0} أيام"
+
+#: frontend/src/utils/index.js:154
 msgid "days"
 msgstr "أيام"
 
@@ -5515,6 +5543,18 @@ msgstr ""
 #: frontend/src/utils/index.js:126
 msgid "{0} d"
 msgstr "{0} د"
+
+#: frontend/src/utils/index.js:119
+msgid "{0} m"
+msgstr "{0} م"
+
+#: frontend/src/utils/index.js:121
+msgid "{0} h"
+msgstr "{0} ح"
+
+#: frontend/src/utils/index.js:123
+msgid "{0} s"
+msgstr "{0} ث"
 
 #: frontend/src/utils/index.js:181
 msgid "{0} days ago"

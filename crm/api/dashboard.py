@@ -119,12 +119,33 @@ def get_total_leads(from_date, to_date, user=""):
 		(current_month_leads - prev_month_leads) / prev_month_leads * 100 if prev_month_leads else 0
 	)
 
+	# Convert to Arabic numerals if language is Arabic
+	lang = frappe.local.lang or 'en'
+	if lang.startswith('ar'):
+		arabic_numerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩']
+		english_numerals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+		
+		def to_arabic(num):
+			num_str = str(int(num))
+			for i, eng in enumerate(english_numerals):
+				num_str = num_str.replace(eng, arabic_numerals[i])
+			return num_str
+		
+		formatted_value = to_arabic(current_month_leads)
+		formatted_delta = to_arabic(abs(delta_in_percentage))
+	else:
+		formatted_value = str(current_month_leads)
+		formatted_delta = str(abs(delta_in_percentage))
+
 	return {
 		"title": _("Total leads"),
 		"tooltip": _("Total number of leads"),
 		"value": current_month_leads,
+		"formattedValue": formatted_value,
 		"delta": delta_in_percentage,
+		"formattedDelta": formatted_delta,
 		"deltaSuffix": "%",
+		"rtl": lang.startswith('ar'),
 	}
 
 
@@ -177,12 +198,33 @@ def get_ongoing_deals(from_date, to_date, user=""):
 		(current_month_deals - prev_month_deals) / prev_month_deals * 100 if prev_month_deals else 0
 	)
 
+	# Convert to Arabic numerals if language is Arabic
+	lang = frappe.local.lang or 'en'
+	if lang.startswith('ar'):
+		arabic_numerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩']
+		english_numerals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+		
+		def to_arabic(num):
+			num_str = str(int(num))
+			for i, eng in enumerate(english_numerals):
+				num_str = num_str.replace(eng, arabic_numerals[i])
+			return num_str
+		
+		formatted_value = to_arabic(current_month_deals)
+		formatted_delta = to_arabic(abs(delta_in_percentage))
+	else:
+		formatted_value = str(current_month_deals)
+		formatted_delta = str(abs(delta_in_percentage))
+
 	return {
 		"title": _("Ongoing deals"),
 		"tooltip": _("Total number of non won/lost deals"),
 		"value": current_month_deals,
+		"formattedValue": formatted_value,
 		"delta": delta_in_percentage,
+		"formattedDelta": formatted_delta,
 		"deltaSuffix": "%",
+		"rtl": lang.startswith('ar'),
 	}
 
 
@@ -292,12 +334,33 @@ def get_won_deals(from_date, to_date, user=""):
 		(current_month_deals - prev_month_deals) / prev_month_deals * 100 if prev_month_deals else 0
 	)
 
+	# Convert to Arabic numerals if language is Arabic
+	lang = frappe.local.lang or 'en'
+	if lang.startswith('ar'):
+		arabic_numerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩']
+		english_numerals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+		
+		def to_arabic(num):
+			num_str = str(int(num))
+			for i, eng in enumerate(english_numerals):
+				num_str = num_str.replace(eng, arabic_numerals[i])
+			return num_str
+		
+		formatted_value = to_arabic(current_month_deals)
+		formatted_delta = to_arabic(abs(delta_in_percentage))
+	else:
+		formatted_value = str(current_month_deals)
+		formatted_delta = str(abs(delta_in_percentage))
+
 	return {
 		"title": _("Won deals"),
 		"tooltip": _("Total number of won deals based on its closure date"),
 		"value": current_month_deals,
+		"formattedValue": formatted_value,
 		"delta": delta_in_percentage,
+		"formattedDelta": formatted_delta,
 		"deltaSuffix": "%",
+		"rtl": lang.startswith('ar'),
 	}
 
 
@@ -349,12 +412,42 @@ def get_average_won_deal_value(from_date, to_date, user=""):
 
 	avg_value_delta = current_month_avg_value - prev_month_avg_value if prev_month_avg_value else 0
 
+	# Convert to Arabic numerals if language is Arabic
+	lang = frappe.local.lang or 'en'
+	if lang.startswith('ar'):
+		arabic_numerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩']
+		english_numerals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+		
+		def to_arabic(num):
+			num_str = str(int(num))
+			for i, eng in enumerate(english_numerals):
+				num_str = num_str.replace(eng, arabic_numerals[i])
+			return num_str
+		
+		def format_arabic_currency(value):
+			if value == 0:
+				return 'ر.س٠'
+			formatted = f"{value:.2f}"
+			parts = formatted.split('.')
+			integer_part = to_arabic(parts[0])
+			decimal_part = to_arabic(parts[1]) if len(parts) > 1 else '٠٠'
+			return f'ر.س{integer_part}.{decimal_part}'
+		
+		formatted_value = format_arabic_currency(current_month_avg_value)
+		formatted_delta = format_arabic_currency(abs(avg_value_delta))
+	else:
+		formatted_value = f"{current_month_avg_value:.2f}"
+		formatted_delta = f"{abs(avg_value_delta):.2f}"
+
 	return {
 		"title": _("Avg. won deal value"),
 		"tooltip": _("Average deal value of won deals"),
 		"value": current_month_avg_value,
+		"formattedValue": formatted_value,
 		"delta": avg_value_delta,
+		"formattedDelta": formatted_delta,
 		"prefix": get_base_currency_symbol(),
+		"rtl": lang.startswith('ar'),
 	}
 
 
@@ -406,13 +499,43 @@ def get_average_deal_value(from_date, to_date, user=""):
 
 	delta = current_month_avg - prev_month_avg if prev_month_avg else 0
 
+	# Convert to Arabic numerals if language is Arabic
+	lang = frappe.local.lang or 'en'
+	if lang.startswith('ar'):
+		arabic_numerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩']
+		english_numerals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+		
+		def to_arabic(num):
+			num_str = str(int(num))
+			for i, eng in enumerate(english_numerals):
+				num_str = num_str.replace(eng, arabic_numerals[i])
+			return num_str
+		
+		def format_arabic_currency(value):
+			if value == 0:
+				return 'ر.س٠'
+			formatted = f"{value:.2f}"
+			parts = formatted.split('.')
+			integer_part = to_arabic(parts[0])
+			decimal_part = to_arabic(parts[1]) if len(parts) > 1 else '٠٠'
+			return f'ر.س{integer_part}.{decimal_part}'
+		
+		formatted_value = format_arabic_currency(current_month_avg)
+		formatted_delta = format_arabic_currency(abs(delta))
+	else:
+		formatted_value = f"{current_month_avg:.2f}"
+		formatted_delta = f"{abs(delta):.2f}"
+
 	return {
 		"title": _("Avg. deal value"),
 		"tooltip": _("Average deal value of ongoing & won deals"),
 		"value": current_month_avg,
+		"formattedValue": formatted_value,
 		"prefix": get_base_currency_symbol(),
 		"delta": delta,
+		"formattedDelta": formatted_delta,
 		"deltaSuffix": "%",
+		"rtl": lang.startswith('ar'),
 	}
 
 
@@ -459,14 +582,35 @@ def get_average_time_to_close_a_lead(from_date, to_date, user=""):
 	prev_avg_lead = result[0].prev_avg_lead or 0
 	delta_lead = current_avg_lead - prev_avg_lead if prev_avg_lead else 0
 
+	# Convert to Arabic numerals if language is Arabic
+	lang = frappe.local.lang or 'en'
+	if lang.startswith('ar'):
+		arabic_numerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩']
+		english_numerals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+		
+		def to_arabic(num):
+			num_str = str(int(num))
+			for i, eng in enumerate(english_numerals):
+				num_str = num_str.replace(eng, arabic_numerals[i])
+			return num_str
+		
+		formatted_value = f"{to_arabic(current_avg_lead)}أيام"
+		formatted_delta = f"{to_arabic(abs(delta_lead))}أيام"
+	else:
+		formatted_value = f"{current_avg_lead} days"
+		formatted_delta = f"{abs(delta_lead)} days"
+
 	return {
 		"title": _("Avg. time to close a lead"),
 		"tooltip": _("Average time taken from lead creation to deal closure"),
 		"value": current_avg_lead,
-		"suffix": " days",
+		"formattedValue": formatted_value,
+		"suffix": _(" days"),
 		"delta": delta_lead,
-		"deltaSuffix": " days",
+		"formattedDelta": formatted_delta,
+		"deltaSuffix": _(" days"),
 		"negativeIsBetter": True,
+		"rtl": lang.startswith('ar'),
 	}
 
 
@@ -513,14 +657,35 @@ def get_average_time_to_close_a_deal(from_date, to_date, user=""):
 	prev_avg_deal = result[0].prev_avg_deal or 0
 	delta_deal = current_avg_deal - prev_avg_deal if prev_avg_deal else 0
 
+	# Convert to Arabic numerals if language is Arabic
+	lang = frappe.local.lang or 'en'
+	if lang.startswith('ar'):
+		arabic_numerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩']
+		english_numerals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+		
+		def to_arabic(num):
+			num_str = str(int(num))
+			for i, eng in enumerate(english_numerals):
+				num_str = num_str.replace(eng, arabic_numerals[i])
+			return num_str
+		
+		formatted_value = f"{to_arabic(current_avg_deal)}أيام"
+		formatted_delta = f"{to_arabic(abs(delta_deal))}أيام"
+	else:
+		formatted_value = f"{current_avg_deal} days"
+		formatted_delta = f"{abs(delta_deal)} days"
+
 	return {
 		"title": _("Avg. time to close a deal"),
 		"tooltip": _("Average time taken from deal creation to deal closure"),
 		"value": current_avg_deal,
-		"suffix": " days",
+		"formattedValue": formatted_value,
+		"suffix": _(" days"),
 		"delta": delta_deal,
-		"deltaSuffix": " days",
+		"formattedDelta": formatted_delta,
+		"deltaSuffix": _(" days"),
 		"negativeIsBetter": True,
+		"rtl": lang.startswith('ar'),
 	}
 
 

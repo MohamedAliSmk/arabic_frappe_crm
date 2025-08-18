@@ -201,33 +201,33 @@ const options = computed(() => [
     hideLabel: true,
     items: [
       {
-        label: 'Last 7 Days',
+        label: __('Last 7 Days'),
         onClick: () => {
-          preset.value = 'Last 7 Days'
+          preset.value = __('Last 7 Days')
           filters.period = getLastXDays(7)
           dashboardItems.reload()
         },
       },
       {
-        label: 'Last 30 Days',
+        label: __('Last 30 Days'),
         onClick: () => {
-          preset.value = 'Last 30 Days'
+          preset.value = __('Last 30 Days')
           filters.period = getLastXDays(30)
           dashboardItems.reload()
         },
       },
       {
-        label: 'Last 60 Days',
+        label: __('Last 60 Days'),
         onClick: () => {
-          preset.value = 'Last 60 Days'
+          preset.value = __('Last 60 Days')
           filters.period = getLastXDays(60)
           dashboardItems.reload()
         },
       },
       {
-        label: 'Last 90 Days',
+        label: __('Last 90 Days'),
         onClick: () => {
-          preset.value = 'Last 90 Days'
+          preset.value = __('Last 90 Days')
           filters.period = getLastXDays(90)
           dashboardItems.reload()
         },
@@ -235,11 +235,11 @@ const options = computed(() => [
     ],
   },
   {
-    label: 'Custom Range',
+    label: __('Custom Range'),
     onClick: () => {
       showDatePicker.value = true
       setTimeout(() => datePickerRef.value?.open(), 0)
-      preset.value = 'Custom Range'
+      preset.value = __('Custom Range')
       filters.period = null // Reset period to allow custom date selection
     },
   },

@@ -98,6 +98,119 @@
 	[dir="rtl"] .field-label-container {
 		justify-content: flex-end;
 	}
+
+	/* Dashboard RTL and Arabic Number Styling */
+	.dashboard-number-card {
+		direction: rtl;
+		text-align: right;
+	}
+
+	.dashboard-number-card .number {
+		direction: rtl;
+		text-align: right;
+		font-family: 'Arial', sans-serif;
+	}
+
+	.dashboard-number-card .title {
+		direction: rtl;
+		text-align: right;
+	}
+
+	.dashboard-number-card .tooltip {
+		direction: rtl;
+		text-align: right;
+	}
+
+	/* Arabic number formatting */
+	.arabic-numbers {
+		font-family: 'Arial', sans-serif;
+	}
+
+	/* Convert numbers to Arabic numerals */
+	.arabic-numbers .number {
+		font-variant-numeric: arabic-indic;
+	}
+
+	/* Dashboard grid layout for RTL */
+	.dashboard-grid {
+		direction: rtl;
+	}
+
+	.dashboard-grid .grid-item {
+		direction: rtl;
+		text-align: right;
+	}
+
+	/* Number chart specific styling */
+	.number-chart-card {
+		direction: rtl;
+		text-align: right;
+	}
+
+	.number-chart-card .chart-value {
+		direction: rtl;
+		text-align: right;
+		font-family: 'Arial', sans-serif;
+	}
+
+	.number-chart-card .chart-title {
+		direction: rtl;
+		text-align: right;
+	}
+
+	.number-chart-card .chart-tooltip {
+		direction: rtl;
+		text-align: right;
+	}
+
+	/* Currency formatting for Arabic */
+	.arabic-currency {
+		direction: rtl;
+		text-align: right;
+	}
+
+	.arabic-currency .currency-symbol {
+		margin-left: 4px;
+		margin-right: 0;
+	}
+
+	/* Days suffix formatting */
+	.arabic-days {
+		direction: rtl;
+		text-align: right;
+	}
+
+	.arabic-days .days-suffix {
+		margin-left: 4px;
+		margin-right: 0;
+	}
+
+	/* Dashboard container RTL */
+	.dashboard-container {
+		direction: rtl;
+	}
+
+	.dashboard-container .dashboard-header {
+		direction: rtl;
+		text-align: right;
+	}
+
+	.dashboard-container .dashboard-filters {
+		direction: rtl;
+		text-align: right;
+	}
+
+	/* Responsive design for RTL */
+	@media (max-width: 768px) {
+		.dashboard-number-card {
+			direction: rtl;
+			text-align: right;
+		}
+		
+		.dashboard-grid {
+			direction: rtl;
+		}
+	}
 }
 
 /* RTL support for form control dropdowns */

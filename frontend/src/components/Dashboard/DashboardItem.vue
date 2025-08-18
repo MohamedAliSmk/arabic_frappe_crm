@@ -5,8 +5,7 @@
       class="flex h-full w-full rounded shadow overflow-hidden cursor-pointer"
     >
       <Tooltip :text="__(item.data.tooltip)">
-        <NumberChart
-          class="!items-start"
+        <ArabicNumberChart
           v-if="item.data"
           :key="index"
           :config="item.data"
@@ -35,7 +34,8 @@
   </div>
 </template>
 <script setup>
-import { AxisChart, DonutChart, NumberChart, Tooltip } from 'frappe-ui'
+import { AxisChart, DonutChart, Tooltip } from 'frappe-ui'
+import ArabicNumberChart from './ArabicNumberChart.vue'
 
 const props = defineProps({
   index: {

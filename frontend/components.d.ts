@@ -21,6 +21,8 @@ declare module 'vue' {
     Apps: typeof import('./src/components/Apps.vue')['default']
     AppsIcon: typeof import('./src/components/Icons/AppsIcon.vue')['default']
     AppSidebar: typeof import('./src/components/Layouts/AppSidebar.vue')['default']
+    ArabicNumberChart: typeof import('./src/components/Dashboard/ArabicNumberChart.vue')['default']
+    ArabicNumberTest: typeof import('./src/components/Dashboard/ArabicNumberTest.vue')['default']
     ArrowUpRightIcon: typeof import('./src/components/Icons/ArrowUpRightIcon.vue')['default']
     AscendingIcon: typeof import('./src/components/Icons/AscendingIcon.vue')['default']
     AssignmentModal: typeof import('./src/components/Modals/AssignmentModal.vue')['default']
