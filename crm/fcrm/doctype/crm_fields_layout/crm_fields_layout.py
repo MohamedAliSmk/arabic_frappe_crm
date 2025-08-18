@@ -198,12 +198,34 @@ def get_permlevel_access(permission_type="write", doctype=None, parent_doctype=N
 
 
 def get_field_obj(field):
-	field["placeholder"] = field.get("placeholder") or "Add " + field.label + "..."
+	# Arabic placeholders based on field labels
+	arabic_placeholders = {
+		"Organization": "أضف منظمة...",
+		"Website": "أضف موقع...", 
+		"Territory": "اختر إقليم...",
+		"Industry": "اختر صناعة...",
+		"Job Title": "أضف مسمى وظيفي...",
+		"Source": "اختر مصدر...",
+		"Lead Owner": "اختر مالك العميل المحتمل...",
+		"منظمة": "أضف منظمة...",
+		"الموقع": "أضف موقع...",
+		"إقليم": "اختر إقليم...",
+		"صناعة": "اختر صناعة...",
+		"المسمى الوظيفي": "أضف مسمى وظيفي...",
+		"المصدر": "اختر مصدر...",
+		"مالك الزبون المحتمل": "اختر مالك العميل المحتمل..."
+	}
+	
+	# Get Arabic placeholder if available, otherwise use English
+	placeholder = arabic_placeholders.get(field.label, "Add " + field.label + "...")
+	field["placeholder"] = field.get("placeholder") or placeholder
 
 	if field.fieldtype == "Link":
-		field["placeholder"] = field.get("placeholder") or "Select " + field.label + "..."
+		placeholder = arabic_placeholders.get(field.label, "Select " + field.label + "...")
+		field["placeholder"] = field.get("placeholder") or placeholder
 	elif field.fieldtype == "Select" and field.options:
-		field["placeholder"] = field.get("placeholder") or "Select " + field.label + "..."
+		placeholder = arabic_placeholders.get(field.label, "Select " + field.label + "...")
+		field["placeholder"] = field.get("placeholder") or placeholder
 		field["options"] = [{"label": option, "value": option} for option in field.options.split("\n")]
 
 	if field.read_only:

@@ -22,3 +22,176 @@
 			prose-th:relative;
 	}
 }
+
+/* Global RTL support for Arabic text */
+@layer utilities {
+	/* RTL support for input fields with Arabic placeholders */
+	input[placeholder*="أضف"],
+	input[placeholder*="اختر"],
+	input[placeholder*="منظمة"],
+	input[placeholder*="موقع"],
+	input[placeholder*="إقليم"],
+	input[placeholder*="صناعة"],
+	input[placeholder*="مسمى"],
+	input[placeholder*="مصدر"],
+	input[placeholder*="مالك"],
+	textarea[placeholder*="أضف"],
+	textarea[placeholder*="اختر"],
+	textarea[placeholder*="منظمة"],
+	textarea[placeholder*="موقع"],
+	textarea[placeholder*="إقليم"],
+	textarea[placeholder*="صناعة"],
+	textarea[placeholder*="مسمى"],
+	textarea[placeholder*="مصدر"],
+	textarea[placeholder*="مالك"] {
+		direction: rtl !important;
+		text-align: right !important;
+	}
+
+	/* RTL support for form controls */
+	.form-control input:not([type='checkbox']),
+	.form-control select,
+	.form-control textarea,
+	.form-control button {
+		direction: rtl;
+		text-align: right;
+	}
+
+	/* RTL support for autocomplete and dropdown components */
+	.combobox-input,
+	.autocomplete-input,
+	.search-input {
+		direction: rtl;
+		text-align: right;
+	}
+
+	/* RTL support for dropdown options */
+	.combobox-options li,
+	.dropdown-options li {
+		direction: rtl;
+		text-align: right;
+	}
+
+	/* RTL support for text inputs */
+	.text-input input {
+		direction: rtl;
+		text-align: right;
+	}
+
+	/* RTL support for buttons with Arabic text */
+	button[dir="rtl"] {
+		direction: rtl;
+		text-align: right;
+	}
+
+	/* RTL support for labels and text with Arabic content */
+	[dir="rtl"] .field-label,
+	[dir="rtl"] .text-label {
+		text-align: right;
+	}
+
+	/* RTL support for form layouts */
+	[dir="rtl"] .field-container {
+		flex-direction: row;
+	}
+
+	[dir="rtl"] .field-label-container {
+		justify-content: flex-end;
+	}
+}
+
+/* RTL support for form control dropdowns */
+.form-control select {
+	direction: rtl;
+	text-align: right;
+	padding-right: 8px;
+	padding-left: 24px;
+}
+
+/* RTL support for button elements that act as dropdowns */
+button[class*="dropdown"],
+button[class*="select"] {
+	direction: rtl;
+	text-align: right;
+}
+
+/* Ensure dropdown arrows are positioned correctly for RTL */
+.form-control button svg,
+.dropdown-button svg {
+	left: 8px;
+	right: auto;
+}
+
+/* RTL arrow positioning - move arrows to the right side */
+.form-control button svg,
+.dropdown-button svg,
+select + svg,
+[class*="dropdown"] svg,
+[class*="select"] svg {
+	left: auto !important;
+	right: 8px !important;
+}
+
+/* Additional RTL arrow fixes for frappe-ui components */
+.feather-icon,
+[class*="icon"],
+[class*="arrow"],
+[class*="chevron"] {
+	left: auto !important;
+	right: 8px !important;
+}
+
+/* Specific RTL fixes for FeatherIcon chevron arrows */
+.feather-icon,
+.h-4.text-ink-gray-5,
+[class*="chevron"] {
+	left: auto !important;
+	right: 8px !important;
+	position: relative !important;
+}
+
+/* RTL support for autocomplete dropdown content */
+.combobox-options,
+.combobox-option,
+.autocomplete-options,
+.autocomplete-option {
+	direction: rtl;
+	text-align: right;
+}
+
+/* RTL support for popover content */
+.popover-content {
+	direction: rtl;
+	text-align: right;
+}
+
+/* RTL support for any remaining dropdown elements */
+[class*="dropdown"] [class*="option"],
+[class*="select"] [class*="option"] {
+	direction: rtl;
+	text-align: right;
+}
+
+/* Force RTL text alignment for all input content */
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+	direction: rtl;
+	text-align: right;
+}
+
+/* Ensure text content is properly aligned within inputs */
+input,
+textarea,
+select,
+button {
+	text-align: right !important;
+}
+
+/* Additional padding for RTL text to prevent cutoff */
+input,
+textarea,
+select {
+	padding-right: 12px !important;
+	padding-left: 8px !important;
+}

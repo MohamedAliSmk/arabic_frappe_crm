@@ -607,4 +607,12 @@ function getDefaultValue(defaultValue, fieldtype) {
 :deep(.grid-row button:focus-within) {
   border: 1px solid var(--outline-gray-2);
 }
+
+/* Add RTL support for Arabic text in grid input fields */
+:deep(.grid-row input:not([type='checkbox'])),
+:deep(.grid-row textarea),
+:deep(.grid-row select) {
+  direction: rtl;
+  text-align: right;
+}
 </style>

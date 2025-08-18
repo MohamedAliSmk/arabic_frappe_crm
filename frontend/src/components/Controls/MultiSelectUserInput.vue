@@ -47,6 +47,7 @@
                 autocomplete="off"
                 @focus="() => togglePopover()"
                 @keydown.delete.capture.stop="removeLastValue"
+                dir="rtl"
               />
             </template>
             <template #body="{ isOpen }">
@@ -276,3 +277,31 @@ function setFocus() {
 
 defineExpose({ setFocus })
 </script>
+
+<style scoped>
+/* RTL support for Arabic text in multi-select input */
+:deep(.search-input) {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Ensure Arabic placeholders are properly aligned */
+:deep(input[placeholder*="أضف"]),
+:deep(input[placeholder*="اختر"]),
+:deep(input[placeholder*="منظمة"]),
+:deep(input[placeholder*="موقع"]),
+:deep(input[placeholder*="إقليم"]),
+:deep(input[placeholder*="صناعة"]),
+:deep(input[placeholder*="مسمى"]),
+:deep(input[placeholder*="مصدر"]),
+:deep(input[placeholder*="مالك"]) {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+/* RTL support for dropdown options */
+:deep(.combobox-options li) {
+  direction: rtl;
+  text-align: right;
+}
+</style>

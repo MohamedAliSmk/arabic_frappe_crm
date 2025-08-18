@@ -17,6 +17,7 @@
               class="relative flex h-7 w-full items-center justify-between gap-2 rounded px-2 py-1 transition-colors"
               :class="inputClasses"
               @click="() => !disabled && togglePopover()"
+              dir="rtl"
             >
               <div
                 v-if="selectedValue"
@@ -29,7 +30,7 @@
               </div>
               <div
                 v-else
-                class="absolute text-ink-gray-4 text-left truncate w-full pr-7"
+                class="absolute text-ink-gray-4 text-right truncate w-full pr-7"
               >
                 {{ placeholder || '' }}
               </div>
@@ -61,6 +62,7 @@
                 :value="query"
                 autocomplete="off"
                 placeholder="Search"
+                dir="rtl"
               />
               <button
                 class="absolute right-1.5 inline-flex h-7 w-7 items-center justify-center"
@@ -304,3 +306,36 @@ const inputClasses = computed(() => {
 
 defineExpose({ query })
 </script>
+
+<style scoped>
+/* RTL support for Arabic text in autocomplete */
+:deep(.form-input) {
+  direction: rtl;
+  text-align: right;
+}
+
+:deep(button[dir="rtl"]) {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Ensure Arabic placeholders are properly aligned */
+:deep(input[placeholder*="أضف"]),
+:deep(input[placeholder*="اختر"]),
+:deep(input[placeholder*="منظمة"]),
+:deep(input[placeholder*="موقع"]),
+:deep(input[placeholder*="إقليم"]),
+:deep(input[placeholder*="صناعة"]),
+:deep(input[placeholder*="مسمى"]),
+:deep(input[placeholder*="مصدر"]),
+:deep(input[placeholder*="مالك"]) {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+/* RTL support for dropdown options */
+:deep(.combobox-options li) {
+  direction: rtl;
+  text-align: right;
+}
+</style>

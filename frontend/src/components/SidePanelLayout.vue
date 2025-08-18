@@ -44,25 +44,6 @@
                     v-if="field.visible"
                     class="field flex items-center gap-2 px-3 leading-5 first:mt-3"
                   >
-                    <Tooltip :text="__(field.label)" :hoverDelay="1">
-                      <div
-                        class="w-[35%] min-w-20 shrink-0 flex items-center gap-0.5"
-                      >
-                        <div class="truncate text-sm text-ink-gray-5">
-                          {{ __(field.label) }}
-                        </div>
-                        <div
-                          v-if="
-                            field.reqd ||
-                            (field.mandatory_depends_on &&
-                              field.mandatory_via_depends_on)
-                          "
-                          class="text-ink-red-2"
-                        >
-                          *
-                        </div>
-                      </div>
-                    </Tooltip>
                     <div class="flex items-center justify-between w-[65%]">
                       <div
                         class="grid min-h-[28px] flex-1 items-center overflow-hidden text-base"
@@ -364,6 +345,25 @@
                         />
                       </div>
                     </div>
+                    <Tooltip :text="__(field.label)" :hoverDelay="1">
+                      <div
+                        class="w-[35%] min-w-20 shrink-0 flex items-center gap-0.5"
+                      >
+                        <div class="truncate text-sm text-ink-gray-5">
+                          {{ __(field.label) }}
+                        </div>
+                        <div
+                          v-if="
+                            field.reqd ||
+                            (field.mandatory_depends_on &&
+                              field.mandatory_via_depends_on)
+                          "
+                          class="text-ink-red-2"
+                        >
+                          *
+                        </div>
+                      </div>
+                    </Tooltip>
                   </div>
                 </template>
               </FadedScrollableDiv>
@@ -559,6 +559,9 @@ function firstVisibleIndex() {
 .dropdown-button {
   border-color: transparent;
   background: transparent;
+  /* Add RTL support for Arabic text */
+  direction: rtl;
+  text-align: right;
 }
 
 :deep(.form-control button) {
@@ -580,8 +583,94 @@ function firstVisibleIndex() {
   width: 0;
 }
 
+/* Ensure dropdown arrows are positioned correctly for RTL */
+.form-control button svg,
+.dropdown-button svg {
+	left: 8px;
+	right: auto;
+}
+
+/* RTL arrow positioning - move arrows to the right side */
+.form-control button svg,
+.dropdown-button svg,
+button svg,
+[class*="dropdown"] svg,
+[class*="select"] svg {
+	left: auto !important;
+	right: 8px !important;
+}
+
+/* Specific RTL fixes for FeatherIcon chevron arrows */
+.feather-icon,
+.h-4.text-ink-gray-5 {
+	left: auto !important;
+	right: 8px !important;
+	position: relative !important;
+}
+
+/* RTL support for nested popover dropdowns */
+.dropdown-button {
+	direction: rtl;
+	text-align: right;
+}
+
+.dropdown-button > div {
+	direction: rtl;
+	text-align: right;
+}
+
+/* RTL support for dropdown content */
+.combo-box-options {
+	direction: rtl;
+	text-align: right;
+}
+
+.combo-box-option {
+	direction: rtl;
+	text-align: right;
+}
+
+/* RTL support for button elements with text content */
+.form-control button,
+.dropdown-button {
+	direction: rtl;
+	text-align: right;
+}
+
+.form-control button > div,
+.dropdown-button > div {
+	direction: rtl;
+	text-align: right;
+	width: 100%;
+}
+
+/* Ensure text content in buttons is properly aligned */
+.form-control button span,
+.dropdown-button span {
+	direction: rtl;
+	text-align: right;
+}
+
+/* Force RTL text alignment for button content */
+.dropdown-button > div,
+.form-control button > div {
+	direction: rtl;
+	text-align: right !important;
+	width: 100%;
+	padding-right: 8px;
+	padding-left: 24px; /* Space for arrow */
+}
+
+/* Ensure text doesn't get cut off in buttons */
+.dropdown-button,
+.form-control button {
+	text-align: right !important;
+	padding-right: 12px !important;
+	padding-left: 8px !important;
+}
+
 .sections .section .column {
-  max-height: 300px;
+	max-height: 300px;
 }
 .sections .section:last-of-type .column {
   max-height: none;

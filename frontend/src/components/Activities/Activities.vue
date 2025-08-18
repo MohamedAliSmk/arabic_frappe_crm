@@ -690,23 +690,23 @@ function update_activities_details(activity) {
 }
 
 const emptyText = computed(() => {
-  let text = 'No Activities'
+  let text = 'لا يوجد نشاطات'
   if (title.value == 'Emails') {
-    text = 'No Email Communications'
+    text = 'لا يوجد اتصالات بريدية'
   } else if (title.value == 'Comments') {
-    text = 'No Comments'
+    text = 'لا يوجد تعليقات'
   } else if (title.value == 'Data') {
-    text = 'No Data'
+    text = 'لا يوجد بيانات'
   } else if (title.value == 'Calls') {
-    text = 'No Call Logs'
+    text = 'لا يوجد تسجيلات المكالمات'
   } else if (title.value == 'Notes') {
-    text = 'No Notes'
+    text = 'لا يوجد ملاحظات'
   } else if (title.value == 'Tasks') {
-    text = 'No Tasks'
+    text = 'لا يوجد مهام'
   } else if (title.value == 'Attachments') {
-    text = 'No Attachments'
+    text = 'لا يوجد مرفقات'
   } else if (title.value == 'WhatsApp') {
-    text = 'No WhatsApp Messages'
+    text = 'لا يوجد رسائل WhatsApp'
   }
   return text
 })
