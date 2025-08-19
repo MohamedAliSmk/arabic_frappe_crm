@@ -2,9 +2,6 @@
   <div class="flex flex-col h-full overflow-hidden">
     <LayoutHeader>
       <template #left-header>
-        <ViewBreadcrumbs routeName="Dashboard" />
-      </template>
-      <template #right-header>
         <Button
           v-if="!editing"
           :label="__('Refresh')"
@@ -48,83 +45,91 @@
           @click="save"
         />
       </template>
+      <template #right-header>
+        <ViewBreadcrumbs routeName="Dashboard" />
+      </template>
     </LayoutHeader>
 
-    <div class="p-5 pb-2 flex items-center gap-4">
-      <Dropdown
-        v-if="!showDatePicker"
-        :options="options"
-        class="form-control"
-        v-model="preset"
-        :placeholder="__('Select Range')"
-        :button="{
-          label: __(preset),
-          class:
-            '!w-full justify-start [&>span]:mr-auto [&>svg]:text-ink-gray-5 ',
-          variant: 'outline',
-          iconRight: 'chevron-down',
-          iconLeft: 'calendar',
-        }"
-      >
-        <template #prefix>
-          <LucideCalendar class="size-4 text-ink-gray-5 mr-2" />
-        </template>
-      </Dropdown>
-      <DateRangePicker
-        v-else
-        class="!w-48"
-        ref="datePickerRef"
-        :value="filters.period"
-        variant="outline"
-        :placeholder="__('Period')"
-        @change="
-          (v) =>
-            updateFilter('period', v, () => {
-              showDatePicker = false
-              if (!v) {
-                filters.period = getLastXDays()
-                preset = 'Last 30 Days'
-              } else {
-                preset = formatter(v)
-              }
-            })
-        "
-        :formatter="formatRange"
-      >
-        <template #prefix>
-          <LucideCalendar class="size-4 text-ink-gray-5 mr-2" />
-        </template>
-      </DateRangePicker>
-      <Link
-        v-if="isAdmin() || isManager()"
-        class="form-control w-48"
-        variant="outline"
-        :value="filters.user && getUser(filters.user).full_name"
-        doctype="User"
-        :filters="{ name: ['in', users.data.crmUsers?.map((u) => u.name)] }"
-        @change="(v) => updateFilter('user', v)"
-        :placeholder="__('Sales user')"
-        :hideMe="true"
-      >
-        <template #prefix>
-          <UserAvatar
-            v-if="filters.user"
-            class="mr-2"
-            :user="filters.user"
-            size="sm"
-          />
-        </template>
-        <template #item-prefix="{ option }">
-          <UserAvatar class="mr-2" :user="option.value" size="sm" />
-        </template>
-        <template #item-label="{ option }">
-          <Tooltip :text="option.value">
-            <div class="cursor-pointer">
-              {{ getUser(option.value).full_name }}
-            </div>
-          </Tooltip>
-        </template>
-      </Link>
+    <div class="p-5 pb-2 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <!-- Left side content can be added here if needed -->
+      </div>
+      <div class="flex items-center gap-4">
+        <Dropdown
+          v-if="!showDatePicker"
+          :options="options"
+          class="form-control"
+          v-model="preset"
+          :placeholder="__('Select Range')"
+          :button="{
+            label: __(preset),
+            class:
+              '!w-full justify-start [&>span]:mr-auto [&>svg]:text-ink-gray-5 ',
+            variant: 'outline',
+            iconRight: 'chevron-down',
+            iconLeft: 'calendar',
+          }"
+        >
+          <template #prefix>
+            <LucideCalendar class="size-4 text-ink-gray-5 mr-2" />
+          </template>
+        </Dropdown>
+        <DateRangePicker
+          v-else
+          class="!w-48"
+          ref="datePickerRef"
+          :value="filters.period"
+          variant="outline"
+          :placeholder="__('Period')"
+          @change="
+            (v) =>
+              updateFilter('period', v, () => {
+                showDatePicker = false
+                if (!v) {
+                  filters.period = getLastXDays()
+                  preset = 'Last 30 Days'
+                } else {
+                  preset = formatter(v)
+                }
+              })
+          "
+          :formatter="formatRange"
+        >
+          <template #prefix>
+            <LucideCalendar class="size-4 text-ink-gray-5 mr-2" />
+          </template>
+        </DateRangePicker>
+        <Link
+          v-if="isAdmin() || isManager()"
+          class="form-control w-48"
+          variant="outline"
+          :value="filters.user && getUser(filters.user).full_name"
+          doctype="User"
+          :filters="{ name: ['in', users.data.crmUsers?.map((u) => u.name)] }"
+          @change="(v) => updateFilter('user', v)"
+          :placeholder="__('Sales user')"
+          :hideMe="true"
+        >
+          <template #prefix>
+            <UserAvatar
+              v-if="filters.user"
+              class="mr-2"
+              :user="filters.user"
+              size="sm"
+            />
+          </template>
+          <template #item-prefix="{ option }">
+            <UserAvatar class="mr-2" :user="option.value" size="sm" />
+          </template>
+          <template #item-label="{ option }">
+            <Tooltip :text="option.value">
+              <div class="cursor-pointer">
+                {{ getUser(option.value).full_name }}
+              </div>
+            </Tooltip>
+          </template>
+        </Link>
+      </div>
     </div>
 
     <div class="w-full overflow-y-scroll">

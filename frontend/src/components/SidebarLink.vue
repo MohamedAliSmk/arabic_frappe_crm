@@ -53,6 +53,8 @@ import { isMobileView, mobileSidebarOpened } from '@/composables/settings'
 const router = useRouter()
 const route = useRoute()
 
+const emit = defineEmits(['click'])
+
 const props = defineProps({
   icon: {
     type: [Object, String, Function],
@@ -72,14 +74,18 @@ const props = defineProps({
 })
 
 function handleClick() {
-  if (!props.to) return
-  if (typeof props.to === 'object') {
-    router.push(props.to)
+  if (props.to) {
+    if (typeof props.to === 'object') {
+      router.push(props.to)
+    } else {
+      router.push({ name: props.to })
+    }
+    if (isMobileView.value) {
+      mobileSidebarOpened.value = false
+    }
   } else {
-    router.push({ name: props.to })
-  }
-  if (isMobileView.value) {
-    mobileSidebarOpened.value = false
+    // Emit click event for custom handlers
+    emit('click')
   }
 }
 

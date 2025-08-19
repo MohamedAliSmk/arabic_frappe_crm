@@ -94,7 +94,7 @@
    "options": "Gender"
   },
   {
-   "default": "New",
+   "default": "جديد",
    "fieldname": "status",
    "fieldtype": "Link",
    "in_list_view": 1,

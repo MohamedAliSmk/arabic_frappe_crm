@@ -4748,13 +4748,13 @@ msgstr ""
 
 #. Description of the 'Exchange Rate' (Float) field in DocType 'CRM Deal'
 #: crm/fcrm/doctype/crm_deal/crm_deal.json
-msgid "The rate used to convert the deal’s currency to your crm's base currency (set in CRM Settings). It is set once when the currency is first added and doesn't change automatically."
+msgid "The rate used to convert the deal's currency to your crm's base currency (set in CRM Settings). It is set once when the currency is first added and doesn't change automatically."
 msgstr ""
 
 #. Description of the 'Exchange Rate' (Float) field in DocType 'CRM
 #. Organization'
 #: crm/fcrm/doctype/crm_organization/crm_organization.json
-msgid "The rate used to convert the organization’s currency to your crm's base currency (set in CRM Settings). It is set once when the currency is first added and doesn't change automatically."
+msgid "The rate used to convert the organization's currency to your crm's base currency (set in CRM Settings). It is set once when the currency is first added and doesn't change automatically."
 msgstr ""
 
 #: crm/fcrm/doctype/crm_service_level_agreement/crm_service_level_agreement.js:14
@@ -5636,4 +5636,24 @@ msgstr ""
 #: frontend/src/data/script.js:192
 msgid "⚠️ No row found for idx: {0} in parent field: {1}"
 msgstr ""
+
+#: Lead Status Options
+msgid "Contacted"
+msgstr "تم الاتصال"
+
+#: Lead Status Options
+msgid "Nurture"
+msgstr "تطوير"
+
+#: Lead Status Options
+msgid "Qualified"
+msgstr "مؤهل"
+
+#: Lead Status Options
+msgid "Unqualified"
+msgstr "غير مؤهل"
+
+#: Lead Status Options
+msgid "Junk"
+msgstr "غير مرغوب"
 

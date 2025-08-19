@@ -1,7 +1,7 @@
 <template>
   <ListView
     :class="$attrs.class"
-    :columns="columns"
+    :columns="reversedColumns"
     :rows="rows"
     :options="{
       getRowRoute: (row) => ({
@@ -21,7 +21,7 @@
       @columnWidthUpdated="emit('columnWidthUpdated')"
     >
       <ListHeaderItem
-        v-for="column in columns"
+        v-for="column in reversedColumns"
         :key="column.key"
         :item="column"
         @columnWidthUpdated="emit('columnWidthUpdated', column)"
@@ -259,6 +259,10 @@ const list = defineModel('list')
 
 const isLikeFilterApplied = computed(() => {
   return list.value.params?.filters?._liked_by ? true : false
+})
+
+const reversedColumns = computed(() => {
+  return [...props.columns].reverse()
 })
 
 const { user } = sessionStore()

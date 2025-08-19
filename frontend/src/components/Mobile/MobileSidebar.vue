@@ -4,14 +4,14 @@
       <TransitionChild
         as="template"
         enter="transition ease-in-out duration-200 transform"
-        enter-from="-translate-x-full"
+        enter-from="translate-x-full"
         enter-to="translate-x-0"
         leave="transition ease-in-out duration-200 transform"
         leave-from="translate-x-0"
-        leave-to="-translate-x-full"
+        leave-to="translate-x-full"
       >
         <div
-          class="relative z-10 flex h-full w-[260px] flex-col justify-between border-r bg-surface-menu-bar transition-all duration-300 ease-in-out"
+          class="relative z-10 flex h-full w-[260px] flex-col justify-between border-l bg-surface-menu-bar transition-all duration-300 ease-in-out ml-auto"
         >
           <div>
             <UserDropdown class="p-2" :isCollapsed="!sidebarOpened" />
