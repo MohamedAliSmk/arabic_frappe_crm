@@ -13,7 +13,10 @@
           :label="__('Notifications')"
           :icon="NotificationsIcon"
           :isCollapsed="isSidebarCollapsed"
-          @click="() => toggleNotificationPanel()"
+          @click="() => {
+            console.log('Notifications button clicked')
+            toggleNotificationPanel()
+          }"
           class="relative mx-2 my-0.5"
         >
           <template #right>

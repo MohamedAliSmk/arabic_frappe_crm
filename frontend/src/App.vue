@@ -30,6 +30,16 @@ const Layout = computed(() => {
 
 onMounted(() => setTheme())
 
+// Set RTL direction for Arabic language
+onMounted(() => {
+  const isArabic = navigator.language?.startsWith('ar') || 
+                   document.documentElement.lang === 'ar'
+  if (isArabic) {
+    document.documentElement.dir = 'rtl'
+    document.documentElement.lang = 'ar'
+  }
+})
+
 setConfig('systemTimezone', window.timezone?.system || null)
 setConfig('localTimezone', window.timezone?.user || null)
 </script>

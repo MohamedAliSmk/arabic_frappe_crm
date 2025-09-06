@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col h-full overflow-hidden">
+  <div class="flex flex-col h-full overflow-hidden" :dir="isRTL ? 'rtl' : undefined" :class="{ 'text-right': isRTL }">
     <LayoutHeader>
       <template #left-header>
         <Button
@@ -173,6 +173,12 @@ import { ref, reactive, computed, provide } from 'vue'
 const { users, getUser, isManager, isAdmin } = usersStore()
 
 const editing = ref(false)
+
+const isRTL = computed(() => {
+  if (typeof window === 'undefined') return false
+  const doc = document.documentElement
+  return doc?.dir === 'rtl' || doc?.lang === 'ar' || navigator.language?.startsWith('ar')
+})
 
 const showDatePicker = ref(false)
 const datePickerRef = ref(null)

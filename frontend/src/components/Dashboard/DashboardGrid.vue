@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-1 overflow-y-auto p-3">
+  <div class="flex-1 overflow-y-auto p-3" :dir="isRTL ? 'rtl' : undefined">
     <GridLayout
       v-if="items.length > 0"
       class="h-fit w-full"
@@ -34,7 +34,8 @@
           </div>
           <div
             v-if="editing"
-            class="flex absolute right-0 top-0 bg-surface-gray-6 rounded cursor-pointer opacity-0 group-hover:opacity-100"
+            class="flex absolute rounded cursor-pointer opacity-0 group-hover:opacity-100"
+            :class="isRTL ? 'left-0 top-0 bg-surface-gray-6' : 'right-0 top-0 bg-surface-gray-6'"
           >
             <div
               class="rounded p-1 hover:bg-surface-gray-5"
@@ -50,6 +51,7 @@
 </template>
 <script setup>
 import { GridLayout } from 'frappe-ui'
+import { computed } from 'vue'
 
 const props = defineProps({
   editing: {
@@ -59,4 +61,10 @@ const props = defineProps({
 })
 
 const items = defineModel()
+
+const isRTL = computed(() => {
+  if (typeof window === 'undefined') return false
+  const doc = document.documentElement
+  return doc?.dir === 'rtl' || doc?.lang === 'ar' || navigator.language?.startsWith('ar')
+})
 </script>

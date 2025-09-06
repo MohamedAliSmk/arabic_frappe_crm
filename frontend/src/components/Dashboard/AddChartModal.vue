@@ -5,7 +5,7 @@
     @close="show = false"
   >
     <template #body-content>
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-4" :dir="isRTL ? 'rtl' : undefined" :class="{ 'text-right': isRTL }">
         <FormControl
           v-model="chartType"
           type="select"
@@ -36,7 +36,7 @@
       </div>
     </template>
     <template #actions>
-      <div class="flex items-center justify-end gap-2">
+      <div class="flex items-center justify-end gap-2" :class="{ 'flex-row-reverse': isRTL }">
         <Button variant="outline" :label="__('Cancel')" @click="show = false" />
         <Button variant="solid" :label="__('Add')" @click="addChart" />
       </div>
@@ -47,7 +47,7 @@
 <script setup lang="ts">
 import { getRandom } from '@/utils'
 import { createResource, Dialog, FormControl } from 'frappe-ui'
-import { ref, reactive, inject } from 'vue'
+import { ref, reactive, inject, computed } from 'vue'
 
 const show = defineModel({
   type: Boolean,
@@ -106,6 +106,12 @@ const donutCharts = [
   { label: __('Leads by source'), value: 'leads_by_source' },
   { label: __('Deals by source'), value: 'deals_by_source' },
 ]
+
+const isRTL = computed(() => {
+  if (typeof window === 'undefined') return false
+  const doc = document.documentElement
+  return doc?.dir === 'rtl' || doc?.lang === 'ar' || navigator.language?.startsWith('ar')
+})
 
 async function addChart() {
   show.value = false

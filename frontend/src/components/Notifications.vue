@@ -8,6 +8,7 @@
       'max-width': '350px',
       'min-width': '350px',
       left: 'calc(100% + 1px)',
+      'background-color': 'red',
     }"
   >
     <div class="flex h-screen flex-col text-ink-gray-9">
@@ -101,12 +102,18 @@ import { timeAgo } from '@/utils'
 import { onClickOutside } from '@vueuse/core'
 import { capture } from '@/telemetry'
 import { Tooltip } from 'frappe-ui'
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
 
 const { $socket } = globalStore()
 const { mark_as_read, toggle, mark_doc_as_read } = notificationsStore()
 
 const target = ref(null)
+
+// Debug: Watch for visible state changes
+watch(visible, (newValue) => {
+  console.log('Notifications panel visible state changed to:', newValue)
+})
+
 onClickOutside(
   target,
   () => {

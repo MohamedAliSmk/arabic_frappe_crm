@@ -136,6 +136,8 @@ const editor = computed(() => {
   return textEditor.value.editor
 })
 
+
+
 function appendEmoji() {
   editor.value.commands.insertContent(emoji.value)
   editor.value.commands.focus()
@@ -157,6 +159,8 @@ const users = computed(() => {
       })) || []
   )
 })
+
+
 
 defineExpose({ editor })
 

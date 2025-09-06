@@ -758,7 +758,10 @@ def get_sales_trend(from_date="", to_date="", user=""):
 		for row in result
 	]
 
-	return {
+	# Check if current language is Arabic for RTL support
+	is_arabic = frappe.local.lang == 'ar'
+	
+	chart_config = {
 		"data": sales_trend,
 		"title": _("Sales trend"),
 		"subtitle": _("Daily performance of leads, deals, and wins"),
@@ -777,6 +780,22 @@ def get_sales_trend(from_date="", to_date="", user=""):
 			{"name": "won_deals", "type": "line", "showDataPoints": True},
 		],
 	}
+	
+	# Add RTL-specific configuration for Arabic
+	if is_arabic:
+		chart_config["rtl"] = True
+		chart_config["axisOptions"] = {
+			"xAxisMode": "tick",
+			"textAlign": "right",
+			"shortenYAxisNumbers": 1,
+		}
+		chart_config["style"] = {
+			"direction": "rtl",
+			"textAlign": "right",
+			"fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+		}
+	
+	return chart_config
 
 
 def get_forecasted_revenue(from_date="", to_date="", user=""):
@@ -826,7 +845,10 @@ def get_forecasted_revenue(from_date="", to_date="", user=""):
 		row["forecasted"] = row["forecasted"] or ""
 		row["actual"] = row["actual"] or ""
 
-	return {
+	# Check if current language is Arabic for RTL support
+	is_arabic = frappe.local.lang == 'ar'
+	
+	chart_config = {
 		"data": result or [],
 		"title": _("Forecasted revenue"),
 		"subtitle": _("Projected vs actual revenue based on deal probability"),
@@ -844,6 +866,22 @@ def get_forecasted_revenue(from_date="", to_date="", user=""):
 			{"name": "actual", "type": "line", "showDataPoints": True},
 		],
 	}
+	
+	# Add RTL-specific configuration for Arabic
+	if is_arabic:
+		chart_config["rtl"] = True
+		chart_config["axisOptions"] = {
+			"xAxisMode": "tick",
+			"textAlign": "right",
+			"shortenYAxisNumbers": 1,
+		}
+		chart_config["style"] = {
+			"direction": "rtl",
+			"textAlign": "right",
+			"fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+		}
+	
+	return chart_config
 
 
 def get_funnel_conversion(from_date="", to_date="", user=""):
@@ -888,7 +926,10 @@ def get_funnel_conversion(from_date="", to_date="", user=""):
 
 	result += get_deal_status_change_counts(from_date, to_date, deal_conds)
 
-	return {
+	# Check if current language is Arabic for RTL support
+	is_arabic = frappe.local.lang == 'ar'
+	
+	chart_config = {
 		"data": result or [],
 		"title": _("Funnel conversion"),
 		"subtitle": _("Lead to deal conversion pipeline"),
@@ -911,6 +952,22 @@ def get_funnel_conversion(from_date="", to_date="", user=""):
 			},
 		],
 	}
+	
+	# Add RTL-specific configuration for Arabic
+	if is_arabic:
+		chart_config["rtl"] = True
+		chart_config["axisOptions"] = {
+			"xAxisMode": "tick",
+			"textAlign": "right",
+			"shortenYAxisNumbers": 1,
+		}
+		chart_config["style"] = {
+			"direction": "rtl",
+			"textAlign": "right",
+			"fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+		}
+	
+	return chart_config
 
 
 def get_deals_by_stage_axis(from_date="", to_date="", user=""):
@@ -948,7 +1005,10 @@ def get_deals_by_stage_axis(from_date="", to_date="", user=""):
 		as_dict=True,
 	)
 
-	return {
+	# Check if current language is Arabic for RTL support
+	is_arabic = frappe.local.lang == 'ar'
+	
+	chart_config = {
 		"data": result or [],
 		"title": _("Deals by ongoing & won stage"),
 		"xAxis": {
@@ -961,6 +1021,22 @@ def get_deals_by_stage_axis(from_date="", to_date="", user=""):
 			{"name": "count", "type": "bar"},
 		],
 	}
+	
+	# Add RTL-specific configuration for Arabic
+	if is_arabic:
+		chart_config["rtl"] = True
+		chart_config["axisOptions"] = {
+			"xAxisMode": "tick",
+			"textAlign": "right",
+			"shortenYAxisNumbers": 1,
+		}
+		chart_config["style"] = {
+			"direction": "rtl",
+			"textAlign": "right",
+			"fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+		}
+	
+	return chart_config
 
 
 def get_deals_by_stage_donut(from_date="", to_date="", user=""):
@@ -998,13 +1074,31 @@ def get_deals_by_stage_donut(from_date="", to_date="", user=""):
 		as_dict=True,
 	)
 
-	return {
+	# Check if current language is Arabic for RTL support
+	is_arabic = frappe.local.lang == 'ar'
+	
+	chart_config = {
 		"data": result or [],
 		"title": _("Deals by stage"),
 		"subtitle": _("Current pipeline distribution"),
 		"categoryColumn": "stage",
 		"valueColumn": "count",
 	}
+	
+	# Add RTL-specific configuration for Arabic
+	if is_arabic:
+		chart_config["rtl"] = True
+		chart_config["options"] = {
+			"textAlign": "right",
+			"direction": "rtl"
+		}
+		chart_config["style"] = {
+			"direction": "rtl",
+			"textAlign": "right",
+			"fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+		}
+	
+	return chart_config
 
 
 def get_lost_deal_reasons(from_date="", to_date="", user=""):
@@ -1043,7 +1137,10 @@ def get_lost_deal_reasons(from_date="", to_date="", user=""):
 		as_dict=True,
 	)
 
-	return {
+	# Check if current language is Arabic for RTL support
+	is_arabic = frappe.local.lang == 'ar'
+	
+	chart_config = {
 		"data": result or [],
 		"title": _("Lost deal reasons"),
 		"subtitle": _("Common reasons for losing deals"),
@@ -1059,6 +1156,22 @@ def get_lost_deal_reasons(from_date="", to_date="", user=""):
 			{"name": "count", "type": "bar"},
 		],
 	}
+	
+	# Add RTL-specific configuration for Arabic
+	if is_arabic:
+		chart_config["rtl"] = True
+		chart_config["axisOptions"] = {
+			"xAxisMode": "tick",
+			"textAlign": "right",
+			"shortenYAxisNumbers": 1,
+		}
+		chart_config["style"] = {
+			"direction": "rtl",
+			"textAlign": "right",
+			"fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+		}
+	
+	return chart_config
 
 
 def get_leads_by_source(from_date="", to_date="", user=""):
@@ -1094,13 +1207,31 @@ def get_leads_by_source(from_date="", to_date="", user=""):
 		as_dict=True,
 	)
 
-	return {
+	# Check if current language is Arabic for RTL support
+	is_arabic = frappe.local.lang == 'ar'
+	
+	chart_config = {
 		"data": result or [],
 		"title": _("Leads by source"),
 		"subtitle": _("Lead generation channel analysis"),
 		"categoryColumn": "source",
 		"valueColumn": "count",
 	}
+	
+	# Add RTL-specific configuration for Arabic
+	if is_arabic:
+		chart_config["rtl"] = True
+		chart_config["options"] = {
+			"textAlign": "right",
+			"direction": "rtl"
+		}
+		chart_config["style"] = {
+			"direction": "rtl",
+			"textAlign": "right",
+			"fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+		}
+	
+	return chart_config
 
 
 def get_deals_by_source(from_date="", to_date="", user=""):
@@ -1136,13 +1267,31 @@ def get_deals_by_source(from_date="", to_date="", user=""):
 		as_dict=True,
 	)
 
-	return {
+	# Check if current language is Arabic for RTL support
+	is_arabic = frappe.local.lang == 'ar'
+	
+	chart_config = {
 		"data": result or [],
 		"title": _("Deals by source"),
 		"subtitle": _("Deal generation channel analysis"),
 		"categoryColumn": "source",
 		"valueColumn": "count",
 	}
+	
+	# Add RTL-specific configuration for Arabic
+	if is_arabic:
+		chart_config["rtl"] = True
+		chart_config["options"] = {
+			"textAlign": "right",
+			"direction": "rtl"
+		}
+		chart_config["style"] = {
+			"direction": "rtl",
+			"textAlign": "right",
+			"fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+		}
+	
+	return chart_config
 
 
 def get_deals_by_territory(from_date="", to_date="", user=""):
@@ -1179,7 +1328,10 @@ def get_deals_by_territory(from_date="", to_date="", user=""):
 		as_dict=True,
 	)
 
-	return {
+	# Check if current language is Arabic for RTL support
+	is_arabic = frappe.local.lang == 'ar'
+	
+	chart_config = {
 		"data": result or [],
 		"title": _("Deals by territory"),
 		"subtitle": _("Geographic distribution of deals and revenue"),
@@ -1199,6 +1351,22 @@ def get_deals_by_territory(from_date="", to_date="", user=""):
 			{"name": "value", "type": "line", "showDataPoints": True, "axis": "y2"},
 		],
 	}
+	
+	# Add RTL-specific configuration for Arabic
+	if is_arabic:
+		chart_config["rtl"] = True
+		chart_config["axisOptions"] = {
+			"xAxisMode": "tick",
+			"textAlign": "right",
+			"shortenYAxisNumbers": 1,
+		}
+		chart_config["style"] = {
+			"direction": "rtl",
+			"textAlign": "right",
+			"fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+		}
+	
+	return chart_config
 
 
 def get_deals_by_salesperson(from_date="", to_date="", user=""):
@@ -1236,7 +1404,10 @@ def get_deals_by_salesperson(from_date="", to_date="", user=""):
 		as_dict=True,
 	)
 
-	return {
+	# Check if current language is Arabic for RTL support
+	is_arabic = frappe.local.lang == 'ar'
+	
+	chart_config = {
 		"data": result or [],
 		"title": _("Deals by salesperson"),
 		"subtitle": _("Number of deals and total value per salesperson"),
@@ -1256,6 +1427,22 @@ def get_deals_by_salesperson(from_date="", to_date="", user=""):
 			{"name": "value", "type": "line", "showDataPoints": True, "axis": "y2"},
 		],
 	}
+	
+	# Add RTL-specific configuration for Arabic
+	if is_arabic:
+		chart_config["rtl"] = True
+		chart_config["axisOptions"] = {
+			"xAxisMode": "tick",
+			"textAlign": "right",
+			"shortenYAxisNumbers": 1,
+		}
+		chart_config["style"] = {
+			"direction": "rtl",
+			"textAlign": "right",
+			"fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+		}
+	
+	return chart_config
 
 
 def get_base_currency_symbol():

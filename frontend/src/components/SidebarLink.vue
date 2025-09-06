@@ -8,7 +8,7 @@
       class="flex w-full items-center justify-between duration-300 ease-in-out"
       :class="isCollapsed ? 'ml-[3px] p-1' : 'px-2 py-1'"
     >
-      <div class="flex items-center truncate">
+      <div class="flex items-center truncate w-full">
         <Tooltip :text="label" placement="right" :disabled="!isCollapsed">
           <slot name="icon">
             <span class="grid flex-shrink-0 place-items-center">
@@ -28,11 +28,11 @@
           :hoverDelay="1.5"
         >
           <span
-            class="flex-1 flex-shrink-0 truncate text-sm duration-300 ease-in-out"
+            class="flex-1 flex-shrink-0 truncate text-sm duration-300 ease-in-out text-right ml-auto"
             :class="
               isCollapsed
-                ? 'ml-0 w-0 overflow-hidden opacity-0'
-                : 'ml-2 w-auto opacity-100'
+                ? 'mr-0 w-0 overflow-hidden opacity-0'
+                : 'mr-2 w-auto opacity-100'
             "
           >
             {{ label }}
