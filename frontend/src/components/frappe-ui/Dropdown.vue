@@ -54,17 +54,24 @@
                     :class="[
                       active ? 'bg-surface-gray-3' : 'text-ink-gray-6',
                       'group flex h-7 w-full items-center rounded px-2 text-base',
+                      document.documentElement.dir === 'rtl' ? 'flex-row-reverse' : '',
                     ]"
                     @click="item.onClick"
                   >
                     <FeatherIcon
                       v-if="item.icon && typeof item.icon === 'string'"
                       :name="item.icon"
-                      class="mr-2 h-4 w-4 flex-shrink-0 text-ink-gray-7"
+                      :class="[
+                        'h-4 w-4 flex-shrink-0 text-ink-gray-7',
+                        document.documentElement.dir === 'rtl' ? 'ml-2' : 'mr-2'
+                      ]"
                       aria-hidden="true"
                     />
                     <component
-                      class="mr-2 h-4 w-4 flex-shrink-0 text-ink-gray-7"
+                      :class="[
+                        'h-4 w-4 flex-shrink-0 text-ink-gray-7',
+                        document.documentElement.dir === 'rtl' ? 'ml-2' : 'mr-2'
+                      ]"
                       v-else-if="item.icon"
                       :is="item.icon"
                     />
@@ -164,3 +171,34 @@ function filterOptions(options) {
     .map((option) => normalizeDropdownItem(option))
 }
 </script>
+
+<style scoped>
+/* RTL support for dropdown menu */
+[dir="rtl"] .dropdown-menu,
+[dir="rtl"] .dropdown-options {
+  direction: rtl;
+  text-align: right;
+}
+
+/* RTL support for dropdown menu items */
+[dir="rtl"] .dropdown-menu button,
+[dir="rtl"] .dropdown-options button {
+  direction: rtl;
+  text-align: right;
+  justify-content: flex-end;
+}
+
+/* RTL support for dropdown menu item text */
+[dir="rtl"] .dropdown-menu span,
+[dir="rtl"] .dropdown-options span {
+  direction: rtl;
+  text-align: right;
+}
+
+/* RTL support for dropdown icons */
+[dir="rtl"] .dropdown-menu .mr-2,
+[dir="rtl"] .dropdown-options .mr-2 {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+</style>

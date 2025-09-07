@@ -57,7 +57,7 @@ import { capture } from '@/telemetry'
 import { createResource } from 'frappe-ui'
 import { useOnboarding } from 'frappe-ui/frappe'
 import { useDocument } from '@/data/document'
-import { computed, onMounted, ref, nextTick } from 'vue'
+import { computed, onMounted, ref, nextTick, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
 const props = defineProps({
@@ -188,8 +188,22 @@ function openQuickEntryModal() {
 }
 
 onMounted(() => {
+  // Debug: Log the defaults prop
+  console.log('LeadModal received defaults:', props.defaults)
+  console.log('LeadModal defaults type:', typeof props.defaults)
+  console.log('LeadModal defaults keys:', props.defaults ? Object.keys(props.defaults) : 'no defaults')
+  
   lead.doc = { no_of_employees: '1-10' }
-  Object.assign(lead.doc, props.defaults)
+  console.log('LeadModal lead.doc before assignment:', lead.doc)
+  
+  if (props.defaults) {
+    Object.assign(lead.doc, props.defaults)
+  }
+  
+  // Debug: Log the final lead.doc after assignment
+  console.log('LeadModal lead.doc after assignment:', lead.doc)
+  console.log('LeadModal lead.doc first_name:', lead.doc.first_name)
+  console.log('LeadModal lead.doc email:', lead.doc.email)
 
   if (!lead.doc?.lead_owner) {
     lead.doc.lead_owner = getUser().name
@@ -197,5 +211,16 @@ onMounted(() => {
   if (!lead.doc?.status && leadStatuses.value[0]?.value) {
     lead.doc.status = leadStatuses.value[0].value
   }
+  
+  console.log('LeadModal final lead.doc:', lead.doc)
 })
+
+// Watch for changes in defaults prop
+watch(() => props.defaults, (newDefaults) => {
+  console.log('LeadModal defaults changed:', newDefaults)
+  if (newDefaults && lead.doc) {
+    Object.assign(lead.doc, newDefaults)
+    console.log('LeadModal lead.doc updated from watch:', lead.doc)
+  }
+}, { deep: true, immediate: true })
 </script>

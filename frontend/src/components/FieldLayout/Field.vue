@@ -407,6 +407,23 @@ function getDataValue(value, field) {
   text-align: right;
 }
 
+/* Enhanced RTL support for select fields and options */
+:deep(.form-control select),
+:deep(.form-control select option) {
+  direction: rtl;
+  text-align: right;
+  unicode-bidi: bidi-override;
+}
+
+/* RTL support for dropdown menus */
+:deep(.dropdown-menu),
+:deep(.select-dropdown),
+:deep([role="listbox"]),
+:deep([role="option"]) {
+  direction: rtl;
+  text-align: right;
+}
+
 /* Ensure all input fields have RTL direction for Arabic placeholders */
 :deep(input[placeholder*="أضف"]),
 :deep(input[placeholder*="اختر"]),

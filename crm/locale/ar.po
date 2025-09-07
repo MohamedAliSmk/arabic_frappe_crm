@@ -1296,7 +1296,7 @@ msgstr "إنشاء مهمة"
 #: frontend/src/components/Modals/ViewModal.vue:9
 #: frontend/src/components/ViewControls.vue:687
 msgid "Create View"
-msgstr ""
+msgstr "إنشاء عرض"
 
 #. Label of the create_customer_on_status_change (Check) field in DocType
 #. 'ERPNext CRM Settings'

@@ -83,6 +83,79 @@
 	text-align: right;
 }
 
+/* Enhanced RTL support for select fields and dropdown options */
+[dir="rtl"] select,
+[dir="rtl"] select option {
+	direction: rtl;
+	text-align: right;
+	unicode-bidi: bidi-override;
+}
+
+/* RTL support for custom dropdown components */
+[dir="rtl"] .form-control select,
+[dir="rtl"] .form-control select option {
+	direction: rtl;
+	text-align: right;
+	unicode-bidi: bidi-override;
+}
+
+/* RTL support for dropdown menus and options */
+[dir="rtl"] .dropdown-menu,
+[dir="rtl"] .dropdown-options,
+[dir="rtl"] .select-options,
+[dir="rtl"] [role="listbox"],
+[dir="rtl"] [role="option"] {
+	direction: rtl;
+	text-align: right;
+}
+
+/* RTL support for frappe-ui FormControl select */
+[dir="rtl"] .form-control[type="select"] select,
+[dir="rtl"] .form-control[type="select"] select option {
+	direction: rtl;
+	text-align: right;
+	unicode-bidi: bidi-override;
+}
+
+/* Additional RTL support for select elements in various contexts */
+[dir="rtl"] .select-wrapper select,
+[dir="rtl"] .select-container select,
+[dir="rtl"] .dropdown-select select {
+	direction: rtl;
+	text-align: right;
+	unicode-bidi: bidi-override;
+}
+
+/* RTL support for select option elements */
+[dir="rtl"] option {
+	direction: rtl;
+	text-align: right;
+	unicode-bidi: bidi-override;
+}
+
+/* RTL support for custom select components */
+[dir="rtl"] .custom-select,
+[dir="rtl"] .select-input,
+[dir="rtl"] .form-select {
+	direction: rtl;
+	text-align: right;
+}
+
+/* RTL support for placeholder text elements */
+[dir="rtl"] .absolute.text-ink-gray-4,
+[dir="rtl"] .placeholder-text,
+[dir="rtl"] .text-ink-gray-4 {
+	direction: rtl;
+	text-align: right;
+}
+
+/* RTL support for autocomplete placeholder elements */
+[dir="rtl"] .absolute.text-ink-gray-4.truncate,
+[dir="rtl"] .autocomplete-placeholder {
+	direction: rtl;
+	text-align: right;
+}
+
 [dir="rtl"] .is-editor-empty {
 	text-align: right;
 }
