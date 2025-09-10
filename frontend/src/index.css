@@ -23,175 +23,205 @@
 	}
 }
 
-/* Global RTL support for Arabic text */
-@layer utilities {
-	/* RTL support for input fields with Arabic placeholders */
-	input[placeholder*="أضف"],
-	input[placeholder*="اختر"],
-	input[placeholder*="منظمة"],
-	input[placeholder*="موقع"],
-	input[placeholder*="إقليم"],
-	input[placeholder*="صناعة"],
-	input[placeholder*="مسمى"],
-	input[placeholder*="مصدر"],
-	input[placeholder*="مالك"],
-	textarea[placeholder*="أضف"],
-	textarea[placeholder*="اختر"],
-	textarea[placeholder*="منظمة"],
-	textarea[placeholder*="موقع"],
-	textarea[placeholder*="إقليم"],
-	textarea[placeholder*="صناعة"],
-	textarea[placeholder*="مسمى"],
-	textarea[placeholder*="مصدر"],
-	textarea[placeholder*="مالك"] {
-		direction: rtl !important;
-		text-align: right !important;
-	}
-
-	/* RTL support for form controls */
-	.form-control input:not([type='checkbox']),
-	.form-control select,
-	.form-control textarea,
-	.form-control button {
-		direction: rtl;
-		text-align: right;
-	}
-
-	/* RTL support for autocomplete and dropdown components */
-	.combobox-input,
-	.autocomplete-input,
-	.search-input {
-		direction: rtl;
-		text-align: right;
-	}
-
-	/* RTL support for dropdown options */
-	.combobox-options li,
-	.dropdown-options li {
-		direction: rtl;
-		text-align: right;
-	}
-
-	/* RTL support for text inputs */
-	.text-input input {
-		direction: rtl;
-		text-align: right;
-	}
-
-	/* RTL support for buttons with Arabic text */
-	button[dir="rtl"] {
-		direction: rtl;
-		text-align: right;
-	}
-
-	/* RTL support for labels and text with Arabic content */
-	[dir="rtl"] .field-label,
-	[dir="rtl"] .text-label {
-		text-align: right;
-	}
-
-	/* RTL support for form layouts */
-	[dir="rtl"] .field-container {
-		flex-direction: row;
-	}
-
-	[dir="rtl"] .field-label-container {
-		justify-content: flex-end;
-	}
-}
-
-/* RTL support for form control dropdowns */
-.form-control select {
-	direction: rtl;
-	text-align: right;
-	padding-right: 8px;
-	padding-left: 24px;
-}
-
-/* RTL support for button elements that act as dropdowns */
-button[class*="dropdown"],
-button[class*="select"] {
+/* Global RTL Support */
+[dir="rtl"] {
 	direction: rtl;
 	text-align: right;
 }
 
-/* Ensure dropdown arrows are positioned correctly for RTL */
-.form-control button svg,
-.dropdown-button svg {
-	left: 8px;
-	right: auto;
+[dir="rtl"] .flex-row {
+	flex-direction: row-reverse;
 }
 
-/* RTL arrow positioning - move arrows to the right side */
-.form-control button svg,
-.dropdown-button svg,
-select + svg,
-[class*="dropdown"] svg,
-[class*="select"] svg {
-	left: auto !important;
-	right: 8px !important;
+[dir="rtl"] .text-left {
+	text-align: right;
 }
 
-/* Additional RTL arrow fixes for frappe-ui components */
-.feather-icon,
-[class*="icon"],
-[class*="arrow"],
-[class*="chevron"] {
-	left: auto !important;
-	right: 8px !important;
+[dir="rtl"] .text-right {
+	text-align: left;
 }
 
-/* Specific RTL fixes for FeatherIcon chevron arrows */
-.feather-icon,
-.h-4.text-ink-gray-5,
-[class*="chevron"] {
-	left: auto !important;
-	right: 8px !important;
-	position: relative !important;
+[dir="rtl"] .rtl-row {
+	flex-direction: row-reverse;
 }
 
-/* RTL support for autocomplete dropdown content */
-.combobox-options,
-.combobox-option,
-.autocomplete-options,
-.autocomplete-option {
+[dir="rtl"] .rtl-row > div:first-child {
+	order: 2;
+}
+
+[dir="rtl"] .rtl-row > div:last-child {
+	order: 1;
+}
+
+[dir="rtl"] .mr-1 { margin-right: 0; margin-left: 0.25rem; }
+[dir="rtl"] .mr-2 { margin-right: 0; margin-left: 0.5rem; }
+[dir="rtl"] .mr-3 { margin-right: 0; margin-left: 0.75rem; }
+[dir="rtl"] .mr-4 { margin-right: 0; margin-left: 1rem; }
+
+[dir="rtl"] .ml-1 { margin-left: 0; margin-right: 0.25rem; }
+[dir="rtl"] .ml-2 { margin-left: 0; margin-right: 0.5rem; }
+[dir="rtl"] .ml-3 { margin-left: 0; margin-right: 0.75rem; }
+[dir="rtl"] .ml-4 { margin-left: 0; margin-right: 1rem; }
+
+[dir="rtl"] .pr-1 { padding-right: 0; padding-left: 0.25rem; }
+[dir="rtl"] .pr-2 { padding-right: 0; padding-left: 0.5rem; }
+[dir="rtl"] .pr-3 { padding-right: 0; padding-left: 0.75rem; }
+[dir="rtl"] .pr-4 { padding-right: 0; padding-left: 1rem; }
+
+[dir="rtl"] .pl-1 { padding-left: 0; padding-right: 0.25rem; }
+[dir="rtl"] .pl-2 { padding-left: 0; padding-right: 0.5rem; }
+[dir="rtl"] .pl-3 { padding-left: 0; padding-right: 0.75rem; }
+[dir="rtl"] .pl-4 { padding-left: 0; padding-right: 1rem; }
+
+/* Ensure form controls and editors are RTL-aligned */
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select,
+[dir="rtl"] [contenteditable="true"],
+[dir="rtl"] .ProseMirror {
 	direction: rtl;
 	text-align: right;
 }
 
-/* RTL support for popover content */
-.popover-content {
+/* Enhanced RTL support for select fields and dropdown options */
+[dir="rtl"] select,
+[dir="rtl"] select option {
+	direction: rtl;
+	text-align: right;
+	unicode-bidi: bidi-override;
+}
+
+/* RTL support for custom dropdown components */
+[dir="rtl"] .form-control select,
+[dir="rtl"] .form-control select option {
+	direction: rtl;
+	text-align: right;
+	unicode-bidi: bidi-override;
+}
+
+/* RTL support for dropdown menus and options */
+[dir="rtl"] .dropdown-menu,
+[dir="rtl"] .dropdown-options,
+[dir="rtl"] .select-options,
+[dir="rtl"] [role="listbox"],
+[dir="rtl"] [role="option"] {
 	direction: rtl;
 	text-align: right;
 }
 
-/* RTL support for any remaining dropdown elements */
-[class*="dropdown"] [class*="option"],
-[class*="select"] [class*="option"] {
+/* RTL support for frappe-ui FormControl select */
+[dir="rtl"] .form-control[type="select"] select,
+[dir="rtl"] .form-control[type="select"] select option {
+	direction: rtl;
+	text-align: right;
+	unicode-bidi: bidi-override;
+}
+
+/* Additional RTL support for select elements in various contexts */
+[dir="rtl"] .select-wrapper select,
+[dir="rtl"] .select-container select,
+[dir="rtl"] .dropdown-select select {
+	direction: rtl;
+	text-align: right;
+	unicode-bidi: bidi-override;
+}
+
+/* RTL support for select option elements */
+[dir="rtl"] option {
+	direction: rtl;
+	text-align: right;
+	unicode-bidi: bidi-override;
+}
+
+/* RTL support for custom select components */
+[dir="rtl"] .custom-select,
+[dir="rtl"] .select-input,
+[dir="rtl"] .form-select {
 	direction: rtl;
 	text-align: right;
 }
 
-/* Force RTL text alignment for all input content */
-input::placeholder,
-textarea::placeholder,
-select::placeholder {
+/* RTL support for placeholder text elements */
+[dir="rtl"] .absolute.text-ink-gray-4,
+[dir="rtl"] .placeholder-text,
+[dir="rtl"] .text-ink-gray-4 {
 	direction: rtl;
 	text-align: right;
 }
 
-/* Ensure text content is properly aligned within inputs */
-input,
-textarea,
-select,
-button {
-	text-align: right !important;
+/* RTL support for autocomplete placeholder elements */
+[dir="rtl"] .absolute.text-ink-gray-4.truncate,
+[dir="rtl"] .autocomplete-placeholder {
+	direction: rtl;
+	text-align: right;
 }
 
-/* Additional padding for RTL text to prevent cutoff */
-input,
-textarea,
-select {
-	padding-right: 12px !important;
-	padding-left: 8px !important;
+[dir="rtl"] .is-editor-empty {
+	text-align: right;
+}
+
+/* Ensure all Arabic text has proper RTL direction */
+[dir="rtl"] div[class*="text-"] {
+	direction: rtl;
+}
+
+/* Hide ERPNext Odoo Theme content on CRM pages */
+.module-grid-header,
+.odoo-module-grid,
+.module-grid,
+.module-grid-header h2,
+.module-grid-header p,
+.module-tiles-container,
+.module-grid-container,
+[class*="module-grid"],
+[class*="odoo-module"] {
+	display: none !important;
+	visibility: hidden !important;
+	opacity: 0 !important;
+	height: 0 !important;
+	width: 0 !important;
+	overflow: hidden !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	border: none !important;
+	position: absolute !important;
+	left: -9999px !important;
+	top: -9999px !important;
+}
+
+/* Additional selectors to catch any variations */
+div[class*="module-grid"],
+div[class*="odoo-module"],
+.module-grid *,
+.odoo-module-grid * {
+	display: none !important;
+	visibility: hidden !important;
+	opacity: 0 !important;
+}
+
+[dir="rtl"] .absolute[class*="text-"] {
+	direction: rtl;
+}
+
+[dir="rtl"] div[data-v-] {
+	direction: rtl;
+}
+
+/* Arabic font support */
+@font-face {
+	font-family: 'InterVar';
+	src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+}
+
+/* Ensure proper Arabic text rendering */
+[lang="ar"], [dir="rtl"] {
+	font-family: 'InterVar', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	line-height: 1.6;
+}
+
+/* Arabic number formatting */
+[dir="rtl"] .arabic-numbers {
+	font-family: 'InterVar', sans-serif;
+	direction: ltr;
+	unicode-bidi: embed;
 }

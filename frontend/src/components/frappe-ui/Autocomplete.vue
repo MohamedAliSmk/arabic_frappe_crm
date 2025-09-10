@@ -31,6 +31,7 @@
               <div
                 v-else
                 class="absolute text-ink-gray-4 text-right truncate w-full pr-7"
+                style="direction: rtl;"
               >
                 {{ placeholder || '' }}
               </div>
@@ -319,6 +320,12 @@ defineExpose({ query })
   text-align: right;
 }
 
+/* RTL support for placeholder text elements */
+.absolute.text-ink-gray-4 {
+  direction: rtl;
+  text-align: right;
+}
+
 /* Ensure Arabic placeholders are properly aligned */
 :deep(input[placeholder*="أضف"]),
 :deep(input[placeholder*="اختر"]),
@@ -335,6 +342,19 @@ defineExpose({ query })
 
 /* RTL support for dropdown options */
 :deep(.combobox-options li) {
+  direction: rtl;
+  text-align: right;
+}
+
+/* RTL support for combobox options text */
+:deep(.combobox-options .truncate) {
+  direction: rtl;
+  text-align: right;
+}
+
+/* RTL support for autocomplete placeholder divs */
+[dir="rtl"] .absolute.text-ink-gray-4,
+[dir="rtl"] .absolute.text-ink-gray-4.truncate {
   direction: rtl;
   text-align: right;
 }

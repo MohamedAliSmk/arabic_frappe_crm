@@ -1,0 +1,158 @@
+/* RTL Chart Styles for Arabic Language Support */
+
+/* Global RTL chart container styles */
+[dir="rtl"] .chart-container,
+[dir="rtl"] .chart-wrapper,
+[dir="rtl"] .chart-area {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Chart title and subtitle RTL styling */
+[dir="rtl"] .chart-title,
+[dir="rtl"] .chart-subtitle,
+[dir="rtl"] .chart-header {
+  text-align: right;
+  direction: rtl;
+  unicode-bidi: embed;
+}
+
+/* Axis labels RTL styling */
+[dir="rtl"] .axis-label,
+[dir="rtl"] .x-axis-label,
+[dir="rtl"] .y-axis-label,
+[dir="rtl"] .y2-axis-label {
+  text-align: right;
+  direction: rtl;
+  unicode-bidi: embed;
+}
+
+/* Legend RTL styling */
+[dir="rtl"] .chart-legend,
+[dir="rtl"] .legend {
+  text-align: right;
+  direction: rtl;
+}
+
+[dir="rtl"] .legend-item,
+[dir="rtl"] .legend-entry {
+  text-align: right;
+  direction: rtl;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+[dir="rtl"] .legend-color {
+  margin-left: 8px;
+  margin-right: 0;
+}
+
+/* Tooltip RTL styling */
+[dir="rtl"] .chart-tooltip,
+[dir="rtl"] .tooltip {
+  text-align: right;
+  direction: rtl;
+  unicode-bidi: embed;
+}
+
+/* Data labels RTL styling */
+[dir="rtl"] .data-label,
+[dir="rtl"] .slice-label,
+[dir="rtl"] .point-label {
+  text-align: right;
+  direction: rtl;
+  unicode-bidi: embed;
+}
+
+/* Chart text elements RTL styling */
+[dir="rtl"] .chart-text,
+[dir="rtl"] .chart-content {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  direction: rtl;
+  text-align: right;
+  unicode-bidi: embed;
+}
+
+/* Ensure all chart text elements are RTL-aware */
+[dir="rtl"] .chart-container *,
+[dir="rtl"] .chart-wrapper *,
+[dir="rtl"] .chart-area * {
+  unicode-bidi: embed;
+}
+
+/* Specific styling for Arabic text in charts */
+[dir="rtl"] .chart-container .arabic-text,
+[dir="rtl"] .chart-wrapper .arabic-text {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  direction: rtl;
+  text-align: right;
+  unicode-bidi: embed;
+}
+
+/* Responsive RTL chart styling */
+@media (max-width: 768px) {
+  [dir="rtl"] .chart-container,
+  [dir="rtl"] .chart-wrapper {
+    font-size: 0.9em;
+  }
+  
+  [dir="rtl"] .chart-title {
+    font-size: 1.1em;
+  }
+  
+  [dir="rtl"] .chart-subtitle {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  [dir="rtl"] .chart-container,
+  [dir="rtl"] .chart-wrapper {
+    font-size: 0.8em;
+  }
+  
+  [dir="rtl"] .chart-title {
+    font-size: 1em;
+  }
+  
+  [dir="rtl"] .chart-subtitle {
+    font-size: 0.8em;
+  }
+}
+
+/* Ensure proper text wrapping for Arabic text */
+[dir="rtl"] .chart-container .text-wrap,
+[dir="rtl"] .chart-wrapper .text-wrap {
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Fix for chart grid and axis lines in RTL */
+[dir="rtl"] .chart-grid,
+[dir="rtl"] .chart-axis {
+  direction: ltr; /* Keep grid and axis lines left-to-right */
+}
+
+/* Ensure chart data points and bars maintain proper positioning */
+[dir="rtl"] .chart-data-point,
+[dir="rtl"] .chart-bar,
+[dir="rtl"] .chart-line {
+  direction: ltr; /* Keep data visualization left-to-right */
+}
+
+/* RTL support for chart animations */
+[dir="rtl"] .chart-animation {
+  direction: rtl;
+}
+
+/* Ensure proper spacing for RTL text */
+[dir="rtl"] .chart-container {
+  padding-right: 0;
+  padding-left: 16px;
+}
+
+[dir="rtl"] .chart-legend {
+  margin-right: 0;
+  margin-left: 16px;
+}

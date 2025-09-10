@@ -24,7 +24,9 @@ export const notificationsStore = defineStore('crm-notifications', () => {
   })
 
   function toggle() {
+    console.log('Toggle function called, current visible value:', visible.value)
     visible.value = !visible.value
+    console.log('New visible value:', visible.value)
   }
 
   function mark_doc_as_read(doc) {

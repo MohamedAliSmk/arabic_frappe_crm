@@ -1,12 +1,11 @@
 <template>
-  <div class="h-full w-full">
+  <div class="h-full w-full" :dir="isRTL ? 'rtl' : undefined">
     <div
       v-if="item.type == 'number_chart'"
       class="flex h-full w-full rounded shadow overflow-hidden cursor-pointer"
     >
       <Tooltip :text="__(item.data.tooltip)">
-        <NumberChart
-          class="!items-start"
+        <ArabicNumberChart
           v-if="item.data"
           :key="index"
           :config="item.data"
@@ -24,18 +23,22 @@
       v-else-if="item.type == 'axis_chart'"
       class="h-full w-full rounded-md bg-surface-white shadow"
     >
-      <AxisChart v-if="item.data" :config="item.data" />
+      <RTLAxisChart v-if="item.data" :config="item.data" />
     </div>
     <div
       v-else-if="item.type == 'donut_chart'"
       class="h-full w-full rounded-md bg-surface-white shadow overflow-hidden"
     >
-      <DonutChart v-if="item.data" :config="item.data" />
+      <RTLDonutChart v-if="item.data" :config="item.data" />
     </div>
   </div>
 </template>
 <script setup>
-import { AxisChart, DonutChart, NumberChart, Tooltip } from 'frappe-ui'
+import { Tooltip } from 'frappe-ui'
+import ArabicNumberChart from './ArabicNumberChart.vue'
+import RTLAxisChart from './RTLAxisChart.vue'
+import RTLDonutChart from './RTLDonutChart.vue'
+import { computed } from 'vue'
 
 const props = defineProps({
   index: {
@@ -50,5 +53,11 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+})
+
+const isRTL = computed(() => {
+  if (typeof window === 'undefined') return false
+  const doc = document.documentElement
+  return doc?.dir === 'rtl' || doc?.lang === 'ar' || navigator.language?.startsWith('ar')
 })
 </script>

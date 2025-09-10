@@ -119,12 +119,33 @@ def get_total_leads(from_date, to_date, user=""):
 		(current_month_leads - prev_month_leads) / prev_month_leads * 100 if prev_month_leads else 0
 	)
 
+	# Convert to Arabic numerals if language is Arabic
+	lang = frappe.local.lang or 'en'
+	if lang.startswith('ar'):
+		arabic_numerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩']
+		english_numerals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+		
+		def to_arabic(num):
+			num_str = str(int(num))
+			for i, eng in enumerate(english_numerals):
+				num_str = num_str.replace(eng, arabic_numerals[i])
+			return num_str
+		
+		formatted_value = to_arabic(current_month_leads)
+		formatted_delta = to_arabic(abs(delta_in_percentage))
+	else:
+		formatted_value = str(current_month_leads)
+		formatted_delta = str(abs(delta_in_percentage))
+
 	return {
 		"title": _("Total leads"),
 		"tooltip": _("Total number of leads"),
 		"value": current_month_leads,
+		"formattedValue": formatted_value,
 		"delta": delta_in_percentage,
+		"formattedDelta": formatted_delta,
 		"deltaSuffix": "%",
+		"rtl": lang.startswith('ar'),
 	}
 
 
@@ -177,12 +198,33 @@ def get_ongoing_deals(from_date, to_date, user=""):
 		(current_month_deals - prev_month_deals) / prev_month_deals * 100 if prev_month_deals else 0
 	)
 
+	# Convert to Arabic numerals if language is Arabic
+	lang = frappe.local.lang or 'en'
+	if lang.startswith('ar'):
+		arabic_numerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩']
+		english_numerals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+		
+		def to_arabic(num):
+			num_str = str(int(num))
+			for i, eng in enumerate(english_numerals):
+				num_str = num_str.replace(eng, arabic_numerals[i])
+			return num_str
+		
+		formatted_value = to_arabic(current_month_deals)
+		formatted_delta = to_arabic(abs(delta_in_percentage))
+	else:
+		formatted_value = str(current_month_deals)
+		formatted_delta = str(abs(delta_in_percentage))
+
 	return {
 		"title": _("Ongoing deals"),
 		"tooltip": _("Total number of non won/lost deals"),
 		"value": current_month_deals,
+		"formattedValue": formatted_value,
 		"delta": delta_in_percentage,
+		"formattedDelta": formatted_delta,
 		"deltaSuffix": "%",
+		"rtl": lang.startswith('ar'),
 	}
 
 
@@ -292,12 +334,33 @@ def get_won_deals(from_date, to_date, user=""):
 		(current_month_deals - prev_month_deals) / prev_month_deals * 100 if prev_month_deals else 0
 	)
 
+	# Convert to Arabic numerals if language is Arabic
+	lang = frappe.local.lang or 'en'
+	if lang.startswith('ar'):
+		arabic_numerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩']
+		english_numerals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+		
+		def to_arabic(num):
+			num_str = str(int(num))
+			for i, eng in enumerate(english_numerals):
+				num_str = num_str.replace(eng, arabic_numerals[i])
+			return num_str
+		
+		formatted_value = to_arabic(current_month_deals)
+		formatted_delta = to_arabic(abs(delta_in_percentage))
+	else:
+		formatted_value = str(current_month_deals)
+		formatted_delta = str(abs(delta_in_percentage))
+
 	return {
 		"title": _("Won deals"),
 		"tooltip": _("Total number of won deals based on its closure date"),
 		"value": current_month_deals,
+		"formattedValue": formatted_value,
 		"delta": delta_in_percentage,
+		"formattedDelta": formatted_delta,
 		"deltaSuffix": "%",
+		"rtl": lang.startswith('ar'),
 	}
 
 
@@ -349,12 +412,42 @@ def get_average_won_deal_value(from_date, to_date, user=""):
 
 	avg_value_delta = current_month_avg_value - prev_month_avg_value if prev_month_avg_value else 0
 
+	# Convert to Arabic numerals if language is Arabic
+	lang = frappe.local.lang or 'en'
+	if lang.startswith('ar'):
+		arabic_numerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩']
+		english_numerals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+		
+		def to_arabic(num):
+			num_str = str(int(num))
+			for i, eng in enumerate(english_numerals):
+				num_str = num_str.replace(eng, arabic_numerals[i])
+			return num_str
+		
+		def format_arabic_currency(value):
+			if value == 0:
+				return 'ر.س٠'
+			formatted = f"{value:.2f}"
+			parts = formatted.split('.')
+			integer_part = to_arabic(parts[0])
+			decimal_part = to_arabic(parts[1]) if len(parts) > 1 else '٠٠'
+			return f'ر.س{integer_part}.{decimal_part}'
+		
+		formatted_value = format_arabic_currency(current_month_avg_value)
+		formatted_delta = format_arabic_currency(abs(avg_value_delta))
+	else:
+		formatted_value = f"{current_month_avg_value:.2f}"
+		formatted_delta = f"{abs(avg_value_delta):.2f}"
+
 	return {
 		"title": _("Avg. won deal value"),
 		"tooltip": _("Average deal value of won deals"),
 		"value": current_month_avg_value,
+		"formattedValue": formatted_value,
 		"delta": avg_value_delta,
+		"formattedDelta": formatted_delta,
 		"prefix": get_base_currency_symbol(),
+		"rtl": lang.startswith('ar'),
 	}
 
 
@@ -406,13 +499,43 @@ def get_average_deal_value(from_date, to_date, user=""):
 
 	delta = current_month_avg - prev_month_avg if prev_month_avg else 0
 
+	# Convert to Arabic numerals if language is Arabic
+	lang = frappe.local.lang or 'en'
+	if lang.startswith('ar'):
+		arabic_numerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩']
+		english_numerals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+		
+		def to_arabic(num):
+			num_str = str(int(num))
+			for i, eng in enumerate(english_numerals):
+				num_str = num_str.replace(eng, arabic_numerals[i])
+			return num_str
+		
+		def format_arabic_currency(value):
+			if value == 0:
+				return 'ر.س٠'
+			formatted = f"{value:.2f}"
+			parts = formatted.split('.')
+			integer_part = to_arabic(parts[0])
+			decimal_part = to_arabic(parts[1]) if len(parts) > 1 else '٠٠'
+			return f'ر.س{integer_part}.{decimal_part}'
+		
+		formatted_value = format_arabic_currency(current_month_avg)
+		formatted_delta = format_arabic_currency(abs(delta))
+	else:
+		formatted_value = f"{current_month_avg:.2f}"
+		formatted_delta = f"{abs(delta):.2f}"
+
 	return {
 		"title": _("Avg. deal value"),
 		"tooltip": _("Average deal value of ongoing & won deals"),
 		"value": current_month_avg,
+		"formattedValue": formatted_value,
 		"prefix": get_base_currency_symbol(),
 		"delta": delta,
+		"formattedDelta": formatted_delta,
 		"deltaSuffix": "%",
+		"rtl": lang.startswith('ar'),
 	}
 
 
@@ -459,14 +582,35 @@ def get_average_time_to_close_a_lead(from_date, to_date, user=""):
 	prev_avg_lead = result[0].prev_avg_lead or 0
 	delta_lead = current_avg_lead - prev_avg_lead if prev_avg_lead else 0
 
+	# Convert to Arabic numerals if language is Arabic
+	lang = frappe.local.lang or 'en'
+	if lang.startswith('ar'):
+		arabic_numerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩']
+		english_numerals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+		
+		def to_arabic(num):
+			num_str = str(int(num))
+			for i, eng in enumerate(english_numerals):
+				num_str = num_str.replace(eng, arabic_numerals[i])
+			return num_str
+		
+		formatted_value = f"{to_arabic(current_avg_lead)}أيام"
+		formatted_delta = f"{to_arabic(abs(delta_lead))}أيام"
+	else:
+		formatted_value = f"{current_avg_lead} days"
+		formatted_delta = f"{abs(delta_lead)} days"
+
 	return {
 		"title": _("Avg. time to close a lead"),
 		"tooltip": _("Average time taken from lead creation to deal closure"),
 		"value": current_avg_lead,
-		"suffix": " days",
+		"formattedValue": formatted_value,
+		"suffix": _(" days"),
 		"delta": delta_lead,
-		"deltaSuffix": " days",
+		"formattedDelta": formatted_delta,
+		"deltaSuffix": _(" days"),
 		"negativeIsBetter": True,
+		"rtl": lang.startswith('ar'),
 	}
 
 
@@ -513,14 +657,35 @@ def get_average_time_to_close_a_deal(from_date, to_date, user=""):
 	prev_avg_deal = result[0].prev_avg_deal or 0
 	delta_deal = current_avg_deal - prev_avg_deal if prev_avg_deal else 0
 
+	# Convert to Arabic numerals if language is Arabic
+	lang = frappe.local.lang or 'en'
+	if lang.startswith('ar'):
+		arabic_numerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩']
+		english_numerals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+		
+		def to_arabic(num):
+			num_str = str(int(num))
+			for i, eng in enumerate(english_numerals):
+				num_str = num_str.replace(eng, arabic_numerals[i])
+			return num_str
+		
+		formatted_value = f"{to_arabic(current_avg_deal)}أيام"
+		formatted_delta = f"{to_arabic(abs(delta_deal))}أيام"
+	else:
+		formatted_value = f"{current_avg_deal} days"
+		formatted_delta = f"{abs(delta_deal)} days"
+
 	return {
 		"title": _("Avg. time to close a deal"),
 		"tooltip": _("Average time taken from deal creation to deal closure"),
 		"value": current_avg_deal,
-		"suffix": " days",
+		"formattedValue": formatted_value,
+		"suffix": _(" days"),
 		"delta": delta_deal,
-		"deltaSuffix": " days",
+		"formattedDelta": formatted_delta,
+		"deltaSuffix": _(" days"),
 		"negativeIsBetter": True,
+		"rtl": lang.startswith('ar'),
 	}
 
 
@@ -593,7 +758,10 @@ def get_sales_trend(from_date="", to_date="", user=""):
 		for row in result
 	]
 
-	return {
+	# Check if current language is Arabic for RTL support
+	is_arabic = frappe.local.lang == 'ar'
+	
+	chart_config = {
 		"data": sales_trend,
 		"title": _("Sales trend"),
 		"subtitle": _("Daily performance of leads, deals, and wins"),
@@ -612,6 +780,22 @@ def get_sales_trend(from_date="", to_date="", user=""):
 			{"name": "won_deals", "type": "line", "showDataPoints": True},
 		],
 	}
+	
+	# Add RTL-specific configuration for Arabic
+	if is_arabic:
+		chart_config["rtl"] = True
+		chart_config["axisOptions"] = {
+			"xAxisMode": "tick",
+			"textAlign": "right",
+			"shortenYAxisNumbers": 1,
+		}
+		chart_config["style"] = {
+			"direction": "rtl",
+			"textAlign": "right",
+			"fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+		}
+	
+	return chart_config
 
 
 def get_forecasted_revenue(from_date="", to_date="", user=""):
@@ -661,7 +845,10 @@ def get_forecasted_revenue(from_date="", to_date="", user=""):
 		row["forecasted"] = row["forecasted"] or ""
 		row["actual"] = row["actual"] or ""
 
-	return {
+	# Check if current language is Arabic for RTL support
+	is_arabic = frappe.local.lang == 'ar'
+	
+	chart_config = {
 		"data": result or [],
 		"title": _("Forecasted revenue"),
 		"subtitle": _("Projected vs actual revenue based on deal probability"),
@@ -679,6 +866,22 @@ def get_forecasted_revenue(from_date="", to_date="", user=""):
 			{"name": "actual", "type": "line", "showDataPoints": True},
 		],
 	}
+	
+	# Add RTL-specific configuration for Arabic
+	if is_arabic:
+		chart_config["rtl"] = True
+		chart_config["axisOptions"] = {
+			"xAxisMode": "tick",
+			"textAlign": "right",
+			"shortenYAxisNumbers": 1,
+		}
+		chart_config["style"] = {
+			"direction": "rtl",
+			"textAlign": "right",
+			"fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+		}
+	
+	return chart_config
 
 
 def get_funnel_conversion(from_date="", to_date="", user=""):
@@ -723,7 +926,10 @@ def get_funnel_conversion(from_date="", to_date="", user=""):
 
 	result += get_deal_status_change_counts(from_date, to_date, deal_conds)
 
-	return {
+	# Check if current language is Arabic for RTL support
+	is_arabic = frappe.local.lang == 'ar'
+	
+	chart_config = {
 		"data": result or [],
 		"title": _("Funnel conversion"),
 		"subtitle": _("Lead to deal conversion pipeline"),
@@ -746,6 +952,22 @@ def get_funnel_conversion(from_date="", to_date="", user=""):
 			},
 		],
 	}
+	
+	# Add RTL-specific configuration for Arabic
+	if is_arabic:
+		chart_config["rtl"] = True
+		chart_config["axisOptions"] = {
+			"xAxisMode": "tick",
+			"textAlign": "right",
+			"shortenYAxisNumbers": 1,
+		}
+		chart_config["style"] = {
+			"direction": "rtl",
+			"textAlign": "right",
+			"fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+		}
+	
+	return chart_config
 
 
 def get_deals_by_stage_axis(from_date="", to_date="", user=""):
@@ -783,7 +1005,10 @@ def get_deals_by_stage_axis(from_date="", to_date="", user=""):
 		as_dict=True,
 	)
 
-	return {
+	# Check if current language is Arabic for RTL support
+	is_arabic = frappe.local.lang == 'ar'
+	
+	chart_config = {
 		"data": result or [],
 		"title": _("Deals by ongoing & won stage"),
 		"xAxis": {
@@ -796,6 +1021,22 @@ def get_deals_by_stage_axis(from_date="", to_date="", user=""):
 			{"name": "count", "type": "bar"},
 		],
 	}
+	
+	# Add RTL-specific configuration for Arabic
+	if is_arabic:
+		chart_config["rtl"] = True
+		chart_config["axisOptions"] = {
+			"xAxisMode": "tick",
+			"textAlign": "right",
+			"shortenYAxisNumbers": 1,
+		}
+		chart_config["style"] = {
+			"direction": "rtl",
+			"textAlign": "right",
+			"fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+		}
+	
+	return chart_config
 
 
 def get_deals_by_stage_donut(from_date="", to_date="", user=""):
@@ -833,13 +1074,31 @@ def get_deals_by_stage_donut(from_date="", to_date="", user=""):
 		as_dict=True,
 	)
 
-	return {
+	# Check if current language is Arabic for RTL support
+	is_arabic = frappe.local.lang == 'ar'
+	
+	chart_config = {
 		"data": result or [],
 		"title": _("Deals by stage"),
 		"subtitle": _("Current pipeline distribution"),
 		"categoryColumn": "stage",
 		"valueColumn": "count",
 	}
+	
+	# Add RTL-specific configuration for Arabic
+	if is_arabic:
+		chart_config["rtl"] = True
+		chart_config["options"] = {
+			"textAlign": "right",
+			"direction": "rtl"
+		}
+		chart_config["style"] = {
+			"direction": "rtl",
+			"textAlign": "right",
+			"fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+		}
+	
+	return chart_config
 
 
 def get_lost_deal_reasons(from_date="", to_date="", user=""):
@@ -878,7 +1137,10 @@ def get_lost_deal_reasons(from_date="", to_date="", user=""):
 		as_dict=True,
 	)
 
-	return {
+	# Check if current language is Arabic for RTL support
+	is_arabic = frappe.local.lang == 'ar'
+	
+	chart_config = {
 		"data": result or [],
 		"title": _("Lost deal reasons"),
 		"subtitle": _("Common reasons for losing deals"),
@@ -894,6 +1156,22 @@ def get_lost_deal_reasons(from_date="", to_date="", user=""):
 			{"name": "count", "type": "bar"},
 		],
 	}
+	
+	# Add RTL-specific configuration for Arabic
+	if is_arabic:
+		chart_config["rtl"] = True
+		chart_config["axisOptions"] = {
+			"xAxisMode": "tick",
+			"textAlign": "right",
+			"shortenYAxisNumbers": 1,
+		}
+		chart_config["style"] = {
+			"direction": "rtl",
+			"textAlign": "right",
+			"fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+		}
+	
+	return chart_config
 
 
 def get_leads_by_source(from_date="", to_date="", user=""):
@@ -929,13 +1207,31 @@ def get_leads_by_source(from_date="", to_date="", user=""):
 		as_dict=True,
 	)
 
-	return {
+	# Check if current language is Arabic for RTL support
+	is_arabic = frappe.local.lang == 'ar'
+	
+	chart_config = {
 		"data": result or [],
 		"title": _("Leads by source"),
 		"subtitle": _("Lead generation channel analysis"),
 		"categoryColumn": "source",
 		"valueColumn": "count",
 	}
+	
+	# Add RTL-specific configuration for Arabic
+	if is_arabic:
+		chart_config["rtl"] = True
+		chart_config["options"] = {
+			"textAlign": "right",
+			"direction": "rtl"
+		}
+		chart_config["style"] = {
+			"direction": "rtl",
+			"textAlign": "right",
+			"fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+		}
+	
+	return chart_config
 
 
 def get_deals_by_source(from_date="", to_date="", user=""):
@@ -971,13 +1267,31 @@ def get_deals_by_source(from_date="", to_date="", user=""):
 		as_dict=True,
 	)
 
-	return {
+	# Check if current language is Arabic for RTL support
+	is_arabic = frappe.local.lang == 'ar'
+	
+	chart_config = {
 		"data": result or [],
 		"title": _("Deals by source"),
 		"subtitle": _("Deal generation channel analysis"),
 		"categoryColumn": "source",
 		"valueColumn": "count",
 	}
+	
+	# Add RTL-specific configuration for Arabic
+	if is_arabic:
+		chart_config["rtl"] = True
+		chart_config["options"] = {
+			"textAlign": "right",
+			"direction": "rtl"
+		}
+		chart_config["style"] = {
+			"direction": "rtl",
+			"textAlign": "right",
+			"fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+		}
+	
+	return chart_config
 
 
 def get_deals_by_territory(from_date="", to_date="", user=""):
@@ -1014,7 +1328,10 @@ def get_deals_by_territory(from_date="", to_date="", user=""):
 		as_dict=True,
 	)
 
-	return {
+	# Check if current language is Arabic for RTL support
+	is_arabic = frappe.local.lang == 'ar'
+	
+	chart_config = {
 		"data": result or [],
 		"title": _("Deals by territory"),
 		"subtitle": _("Geographic distribution of deals and revenue"),
@@ -1034,6 +1351,22 @@ def get_deals_by_territory(from_date="", to_date="", user=""):
 			{"name": "value", "type": "line", "showDataPoints": True, "axis": "y2"},
 		],
 	}
+	
+	# Add RTL-specific configuration for Arabic
+	if is_arabic:
+		chart_config["rtl"] = True
+		chart_config["axisOptions"] = {
+			"xAxisMode": "tick",
+			"textAlign": "right",
+			"shortenYAxisNumbers": 1,
+		}
+		chart_config["style"] = {
+			"direction": "rtl",
+			"textAlign": "right",
+			"fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+		}
+	
+	return chart_config
 
 
 def get_deals_by_salesperson(from_date="", to_date="", user=""):
@@ -1071,7 +1404,10 @@ def get_deals_by_salesperson(from_date="", to_date="", user=""):
 		as_dict=True,
 	)
 
-	return {
+	# Check if current language is Arabic for RTL support
+	is_arabic = frappe.local.lang == 'ar'
+	
+	chart_config = {
 		"data": result or [],
 		"title": _("Deals by salesperson"),
 		"subtitle": _("Number of deals and total value per salesperson"),
@@ -1091,6 +1427,22 @@ def get_deals_by_salesperson(from_date="", to_date="", user=""):
 			{"name": "value", "type": "line", "showDataPoints": True, "axis": "y2"},
 		],
 	}
+	
+	# Add RTL-specific configuration for Arabic
+	if is_arabic:
+		chart_config["rtl"] = True
+		chart_config["axisOptions"] = {
+			"xAxisMode": "tick",
+			"textAlign": "right",
+			"shortenYAxisNumbers": 1,
+		}
+		chart_config["style"] = {
+			"direction": "rtl",
+			"textAlign": "right",
+			"fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+		}
+	
+	return chart_config
 
 
 def get_base_currency_symbol():

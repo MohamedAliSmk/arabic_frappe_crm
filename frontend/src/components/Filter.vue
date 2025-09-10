@@ -558,7 +558,8 @@ function parseFilters(filters) {
 }
 
 function transformIn(f) {
-  if (f.operator.includes('like') && !f.value.includes('%')) {
+  if (f.operator && typeof f.operator === 'string' && f.operator.includes('like') && 
+      f.value && typeof f.value === 'string' && !f.value.includes('%')) {
     f.value = `%${f.value}%`
   }
   return f

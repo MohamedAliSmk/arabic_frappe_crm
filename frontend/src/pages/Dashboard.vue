@@ -1,10 +1,7 @@
 <template>
-  <div class="flex flex-col h-full overflow-hidden">
+  <div class="flex flex-col h-full overflow-hidden" :dir="isRTL ? 'rtl' : undefined" :class="{ 'text-right': isRTL }">
     <LayoutHeader>
       <template #left-header>
-        <ViewBreadcrumbs routeName="Dashboard" />
-      </template>
-      <template #right-header>
         <Button
           v-if="!editing"
           :label="__('Refresh')"
@@ -48,83 +45,91 @@
           @click="save"
         />
       </template>
+      <template #right-header>
+        <ViewBreadcrumbs routeName="Dashboard" />
+      </template>
     </LayoutHeader>
 
-    <div class="p-5 pb-2 flex items-center gap-4">
-      <Dropdown
-        v-if="!showDatePicker"
-        :options="options"
-        class="form-control"
-        v-model="preset"
-        :placeholder="__('Select Range')"
-        :button="{
-          label: __(preset),
-          class:
-            '!w-full justify-start [&>span]:mr-auto [&>svg]:text-ink-gray-5 ',
-          variant: 'outline',
-          iconRight: 'chevron-down',
-          iconLeft: 'calendar',
-        }"
-      >
-        <template #prefix>
-          <LucideCalendar class="size-4 text-ink-gray-5 mr-2" />
-        </template>
-      </Dropdown>
-      <DateRangePicker
-        v-else
-        class="!w-48"
-        ref="datePickerRef"
-        :value="filters.period"
-        variant="outline"
-        :placeholder="__('Period')"
-        @change="
-          (v) =>
-            updateFilter('period', v, () => {
-              showDatePicker = false
-              if (!v) {
-                filters.period = getLastXDays()
-                preset = 'Last 30 Days'
-              } else {
-                preset = formatter(v)
-              }
-            })
-        "
-        :formatter="formatRange"
-      >
-        <template #prefix>
-          <LucideCalendar class="size-4 text-ink-gray-5 mr-2" />
-        </template>
-      </DateRangePicker>
-      <Link
-        v-if="isAdmin() || isManager()"
-        class="form-control w-48"
-        variant="outline"
-        :value="filters.user && getUser(filters.user).full_name"
-        doctype="User"
-        :filters="{ name: ['in', users.data.crmUsers?.map((u) => u.name)] }"
-        @change="(v) => updateFilter('user', v)"
-        :placeholder="__('Sales user')"
-        :hideMe="true"
-      >
-        <template #prefix>
-          <UserAvatar
-            v-if="filters.user"
-            class="mr-2"
-            :user="filters.user"
-            size="sm"
-          />
-        </template>
-        <template #item-prefix="{ option }">
-          <UserAvatar class="mr-2" :user="option.value" size="sm" />
-        </template>
-        <template #item-label="{ option }">
-          <Tooltip :text="option.value">
-            <div class="cursor-pointer">
-              {{ getUser(option.value).full_name }}
-            </div>
-          </Tooltip>
-        </template>
-      </Link>
+    <div class="p-5 pb-2 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <!-- Left side content can be added here if needed -->
+      </div>
+      <div class="flex items-center gap-4">
+        <Dropdown
+          v-if="!showDatePicker"
+          :options="options"
+          class="form-control"
+          v-model="preset"
+          :placeholder="__('Select Range')"
+          :button="{
+            label: __(preset),
+            class:
+              '!w-full justify-start [&>span]:mr-auto [&>svg]:text-ink-gray-5 ',
+            variant: 'outline',
+            iconRight: 'chevron-down',
+            iconLeft: 'calendar',
+          }"
+        >
+          <template #prefix>
+            <LucideCalendar class="size-4 text-ink-gray-5 mr-2" />
+          </template>
+        </Dropdown>
+        <DateRangePicker
+          v-else
+          class="!w-48"
+          ref="datePickerRef"
+          :value="filters.period"
+          variant="outline"
+          :placeholder="__('Period')"
+          @change="
+            (v) =>
+              updateFilter('period', v, () => {
+                showDatePicker = false
+                if (!v) {
+                  filters.period = getLastXDays()
+                  preset = 'Last 30 Days'
+                } else {
+                  preset = formatter(v)
+                }
+              })
+          "
+          :formatter="formatRange"
+        >
+          <template #prefix>
+            <LucideCalendar class="size-4 text-ink-gray-5 mr-2" />
+          </template>
+        </DateRangePicker>
+        <Link
+          v-if="isAdmin() || isManager()"
+          class="form-control w-48"
+          variant="outline"
+          :value="filters.user && getUser(filters.user).full_name"
+          doctype="User"
+          :filters="{ name: ['in', users.data.crmUsers?.map((u) => u.name)] }"
+          @change="(v) => updateFilter('user', v)"
+          :placeholder="__('Sales user')"
+          :hideMe="true"
+        >
+          <template #prefix>
+            <UserAvatar
+              v-if="filters.user"
+              class="mr-2"
+              :user="filters.user"
+              size="sm"
+            />
+          </template>
+          <template #item-prefix="{ option }">
+            <UserAvatar class="mr-2" :user="option.value" size="sm" />
+          </template>
+          <template #item-label="{ option }">
+            <Tooltip :text="option.value">
+              <div class="cursor-pointer">
+                {{ getUser(option.value).full_name }}
+              </div>
+            </Tooltip>
+          </template>
+        </Link>
+      </div>
     </div>
 
     <div class="w-full overflow-y-scroll">
@@ -169,6 +174,12 @@ const { users, getUser, isManager, isAdmin } = usersStore()
 
 const editing = ref(false)
 
+const isRTL = computed(() => {
+  if (typeof window === 'undefined') return false
+  const doc = document.documentElement
+  return doc?.dir === 'rtl' || doc?.lang === 'ar' || navigator.language?.startsWith('ar')
+})
+
 const showDatePicker = ref(false)
 const datePickerRef = ref(null)
 const preset = ref('Last 30 Days')
@@ -201,33 +212,33 @@ const options = computed(() => [
     hideLabel: true,
     items: [
       {
-        label: 'Last 7 Days',
+        label: __('Last 7 Days'),
         onClick: () => {
-          preset.value = 'Last 7 Days'
+          preset.value = __('Last 7 Days')
           filters.period = getLastXDays(7)
           dashboardItems.reload()
         },
       },
       {
-        label: 'Last 30 Days',
+        label: __('Last 30 Days'),
         onClick: () => {
-          preset.value = 'Last 30 Days'
+          preset.value = __('Last 30 Days')
           filters.period = getLastXDays(30)
           dashboardItems.reload()
         },
       },
       {
-        label: 'Last 60 Days',
+        label: __('Last 60 Days'),
         onClick: () => {
-          preset.value = 'Last 60 Days'
+          preset.value = __('Last 60 Days')
           filters.period = getLastXDays(60)
           dashboardItems.reload()
         },
       },
       {
-        label: 'Last 90 Days',
+        label: __('Last 90 Days'),
         onClick: () => {
-          preset.value = 'Last 90 Days'
+          preset.value = __('Last 90 Days')
           filters.period = getLastXDays(90)
           dashboardItems.reload()
         },
@@ -235,11 +246,11 @@ const options = computed(() => [
     ],
   },
   {
-    label: 'Custom Range',
+    label: __('Custom Range'),
     onClick: () => {
       showDatePicker.value = true
       setTimeout(() => datePickerRef.value?.open(), 0)
-      preset.value = 'Custom Range'
+      preset.value = __('Custom Range')
       filters.period = null // Reset period to allow custom date selection
     },
   },

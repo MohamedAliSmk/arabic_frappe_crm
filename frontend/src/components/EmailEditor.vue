@@ -187,6 +187,7 @@ import { validateEmail } from '@/utils'
 import Paragraph from '@tiptap/extension-paragraph'
 import { EditorContent } from '@tiptap/vue-3'
 import { ref, computed, nextTick } from 'vue'
+import { usersStore } from '@/stores/users'
 
 const props = defineProps({
   placeholder: {
@@ -219,6 +220,17 @@ const props = defineProps({
   },
 })
 
+const modelValue = defineModel()
+const attachments = defineModel('attachments')
+const content = defineModel('content')
+const toEmails = defineModel('toEmails')
+const ccEmails = defineModel('ccEmails')
+const bccEmails = defineModel('bccEmails')
+const cc = defineModel('cc')
+const bcc = defineModel('bcc')
+
+const { users: usersList } = usersStore()
+
 const CustomParagraph = Paragraph.extend({
   addAttributes() {
     return {
@@ -237,19 +249,10 @@ const CustomParagraph = Paragraph.extend({
   },
 })
 
-const modelValue = defineModel()
-const attachments = defineModel('attachments')
-const content = defineModel('content')
-
 const textEditor = ref(null)
-const cc = ref(false)
-const bcc = ref(false)
 const emoji = ref('')
-
+const showEmailTemplateSelectorModal = ref(false)
 const subject = ref(props.subject)
-const toEmails = ref(modelValue.value.email ? [modelValue.value.email] : [])
-const ccEmails = ref([])
-const bccEmails = ref([])
 const ccInput = ref(null)
 const bccInput = ref(null)
 
@@ -257,11 +260,32 @@ const editor = computed(() => {
   return textEditor.value.editor
 })
 
+
+
+function appendEmoji() {
+  editor.value.commands.insertContent(emoji.value)
+  editor.value.commands.focus()
+  emoji.value = ''
+  capture('emoji_inserted_in_email', { emoji: emoji.value })
+}
+
 function removeAttachment(attachment) {
   attachments.value = attachments.value.filter((a) => a !== attachment)
 }
 
-const showEmailTemplateSelectorModal = ref(false)
+function toggleCC() {
+  cc.value = !cc.value
+  if (cc.value) {
+    nextTick(() => ccInput.value.setFocus())
+  }
+}
+
+function toggleBCC() {
+  bcc.value = !bcc.value
+  if (bcc.value) {
+    nextTick(() => bccInput.value.setFocus())
+  }
+}
 
 async function applyEmailTemplate(template) {
   let data = await call(
@@ -284,22 +308,18 @@ async function applyEmailTemplate(template) {
   capture('email_template_applied', { doctype: props.doctype })
 }
 
-function appendEmoji() {
-  editor.value.commands.insertContent(emoji.value)
-  editor.value.commands.focus()
-  emoji.value = ''
-  capture('emoji_inserted_in_email', { emoji: emoji.value })
-}
+const users = computed(() => {
+  return (
+    usersList.data?.crmUsers
+      ?.filter((user) => user.enabled)
+      .map((user) => ({
+        label: user.full_name.trimEnd(),
+        value: user.name,
+      })) || []
+  )
+})
 
-function toggleCC() {
-  cc.value = !cc.value
-  cc.value && nextTick(() => ccInput.value.setFocus())
-}
 
-function toggleBCC() {
-  bcc.value = !bcc.value
-  bcc.value && nextTick(() => bccInput.value.setFocus())
-}
 
 defineExpose({
   editor,

@@ -100,6 +100,14 @@
                   </template>
                 </Button>
                 <Button
+                  :label="__('Create Lead')"
+                  theme="blue"
+                  size="sm"
+                  icon-left="plus"
+                  :title="__('Create a new lead with contact information pre-filled')"
+                  @click="createLeadFromContact()"
+                />
+                <Button
                   :label="__('Delete')"
                   theme="red"
                   size="sm"
@@ -174,6 +182,10 @@
     :docname="contact.doc.name"
     name="Contacts"
   />
+  <LeadModal
+    v-model="showLeadModal"
+    :defaults="leadDefaults"
+  />
 </template>
 
 <script setup>
@@ -186,6 +198,8 @@ import PhoneIcon from '@/components/Icons/PhoneIcon.vue'
 import CameraIcon from '@/components/Icons/CameraIcon.vue'
 import DealsIcon from '@/components/Icons/DealsIcon.vue'
 import DealsListView from '@/components/ListViews/DealsListView.vue'
+import LeadModal from '@/components/Modals/LeadModal.vue'
+import DeleteLinkedDocModal from '@/components/DeleteLinkedDocModal.vue'
 import { formatDate, timeAgo, validateIsImageFile } from '@/utils'
 import { getView } from '@/utils/view'
 import { useDocument } from '@/data/document'
@@ -207,8 +221,11 @@ import {
   usePageMeta,
   Dropdown,
   toast,
+  Button,
+  Badge,
+  ErrorMessage,
 } from 'frappe-ui'
-import { ref, computed, h } from 'vue'
+import { ref, computed, h, watch, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 
 const { brand } = getSettings()
@@ -270,9 +287,88 @@ usePageMeta(() => {
   }
 })
 const showDeleteLinkedDocModal = ref(false)
+const showLeadModal = ref(false)
+const leadDefaults = ref({})
+const leadCreatedFromContact = ref(false)
+
+// Watch for lead modal closure to show success message
+watch(showLeadModal, (newValue, oldValue) => {
+  if (oldValue === true && newValue === false && leadCreatedFromContact.value) {
+    toast.success(__('Lead created successfully with contact information!'))
+    leadCreatedFromContact.value = false
+  }
+})
 
 async function deleteContact() {
   showDeleteLinkedDocModal.value = true
+}
+
+function createLeadFromContact() {
+  // Set flag to show success message when modal closes
+  leadCreatedFromContact.value = true
+  
+  // Check if contact document is loaded
+  if (!contact.doc || !contact.doc.name) {
+    console.error('Contact document not loaded yet')
+    toast.error(__('Contact data is still loading. Please try again.'))
+    return
+  }
+  
+  // Debug: Log contact data to console
+  console.log('Contact data:', contact.doc)
+  console.log('Contact first_name:', contact.doc?.first_name)
+  console.log('Contact email_id:', contact.doc?.email_id)
+  console.log('Contact mobile_no:', contact.doc?.mobile_no)
+  
+  // Pre-populate lead form with comprehensive contact data
+  const defaults = {
+    // Basic contact information
+    first_name: contact.doc?.first_name || '',
+    last_name: contact.doc?.last_name || '',
+    middle_name: contact.doc?.middle_name || '',
+    full_name: contact.doc?.full_name || '',
+    salutation: contact.doc?.salutation || '',
+    gender: contact.doc?.gender || '',
+    
+    // Contact details
+    email: contact.doc?.email_id || '',
+    mobile_no: contact.doc?.mobile_no || '',
+    phone: contact.doc?.phone || '',
+    
+    // Organization information
+    company_name: contact.doc?.company_name || '',
+    organization: contact.doc?.company_name || '',
+    job_title: contact.doc?.designation || '',
+    
+    // Lead specific fields
+    lead_owner: contact.doc?.lead_owner || '',
+    source: 'Contact',
+    status: 'Open',
+    
+    // Additional information
+    website: contact.doc?.website || '',
+    territory: contact.doc?.territory || '',
+    industry: contact.doc?.industry || '',
+    
+    // Include contact image if available
+    image: contact.doc?.image || '',
+    
+    // Set default values for lead-specific fields
+    no_of_employees: '1-10',
+    annual_revenue: 0
+  }
+  
+  leadDefaults.value = defaults
+  
+  // Debug: Log the defaults being passed
+  console.log('Lead defaults:', leadDefaults.value)
+  console.log('Lead defaults type:', typeof leadDefaults.value)
+  console.log('Lead defaults keys:', Object.keys(leadDefaults.value))
+  
+  // Use nextTick to ensure the defaults are set before showing the modal
+  nextTick(() => {
+    showLeadModal.value = true
+  })
 }
 
 function changeContactImage(file) {

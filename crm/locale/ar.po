@@ -20,7 +20,7 @@ msgstr ""
 
 #: frontend/src/components/ViewControls.vue:1217
 msgid " (New)"
-msgstr ""
+msgstr " (جديد)"
 
 #: frontend/src/components/Modals/TaskModal.vue:99
 #: frontend/src/components/Telephony/TaskPanel.vue:70
@@ -120,7 +120,7 @@ msgstr ""
 #: frontend/src/components/Settings/EmailTemplate/EditEmailTemplate.vue:98
 #: frontend/src/components/Settings/EmailTemplate/NewEmailTemplate.vue:98
 msgid "<p>Dear {{ lead_name }},</p>\\n\\n<p>This is a reminder for the payment of {{ grand_total }}.</p>\\n\\n<p>Thanks,</p>\\n<p>Frappé</p>"
-msgstr ""
+msgstr "<p>عزيزي {{ lead_name }}،</p>\\n\\n<p>هذا تذكير بدفع مبلغ {{ grand_total }}.</p>\\n\\n<p>شكراً،</p>\\n<p>فرابي</p>"
 
 #. Header text in the Frappe CRM Workspace
 #: crm/fcrm/workspace/frappe_crm/frappe_crm.json
@@ -146,7 +146,7 @@ msgstr "مفتاح API"
 
 #: frontend/src/components/Settings/emailConfig.js:179
 msgid "API Key is required"
-msgstr ""
+msgstr "مفتاح API مطلوب"
 
 #. Label of the api_secret (Password) field in DocType 'CRM Twilio Settings'
 #. Label of the api_secret (Password) field in DocType 'ERPNext CRM Settings'
@@ -158,15 +158,15 @@ msgstr "كلمة مرور API"
 #. Label of the api_token (Password) field in DocType 'CRM Exotel Settings'
 #: crm/fcrm/doctype/crm_exotel_settings/crm_exotel_settings.json
 msgid "API Token"
-msgstr ""
+msgstr "رمز API"
 
 #: frontend/src/components/Telephony/TwilioCallUI.vue:92
 msgid "Accept"
-msgstr ""
+msgstr "قبول"
 
 #: crm/fcrm/doctype/crm_invitation/crm_invitation.js:7
 msgid "Accept Invitation"
-msgstr ""
+msgstr "قبول الدعوة"
 
 #. Option for the 'Status' (Select) field in DocType 'CRM Invitation'
 #: crm/fcrm/doctype/crm_invitation/crm_invitation.json
@@ -176,7 +176,7 @@ msgstr "مقبول"
 #. Label of the accepted_at (Datetime) field in DocType 'CRM Invitation'
 #: crm/fcrm/doctype/crm_invitation/crm_invitation.json
 msgid "Accepted At"
-msgstr ""
+msgstr "تم القبول في"
 
 #: frontend/src/components/Settings/emailConfig.js:13
 msgid "Account Name"
@@ -187,11 +187,11 @@ msgstr "اسم الحساب"
 #: crm/fcrm/doctype/crm_exotel_settings/crm_exotel_settings.json
 #: crm/fcrm/doctype/crm_twilio_settings/crm_twilio_settings.json
 msgid "Account SID"
-msgstr ""
+msgstr "معرف حساب SID"
 
 #: frontend/src/components/Settings/emailConfig.js:165
 msgid "Account name is required"
-msgstr ""
+msgstr "اسم الحساب مطلوب"
 
 #: frontend/src/components/CustomActions.vue:73
 #: frontend/src/components/ViewControls.vue:683
@@ -211,7 +211,7 @@ msgstr "إضافة"
 
 #: frontend/src/components/Settings/EmailAccountList.vue:19
 msgid "Add Account"
-msgstr ""
+msgstr "إضافة حساب"
 
 #: frontend/src/components/ColumnSettings.vue:69
 #: frontend/src/components/Kanban/KanbanView.vue:157
@@ -221,18 +221,18 @@ msgstr "إضافة عمود"
 #: frontend/src/components/Modals/AddExistingUserModal.vue:4
 #: frontend/src/components/Settings/Users.vue:21
 msgid "Add Existing User"
-msgstr ""
+msgstr "إضافة مستخدم موجود"
 
 #: frontend/src/components/Controls/GridFieldsEditorModal.vue:58
 #: frontend/src/components/FieldLayoutEditor.vue:173
 #: frontend/src/components/Kanban/KanbanSettings.vue:84
 #: frontend/src/components/SidePanelLayoutEditor.vue:98
 msgid "Add Field"
-msgstr ""
+msgstr "إضافة حقل"
 
 #: frontend/src/components/Filter.vue:138
 msgid "Add Filter"
-msgstr ""
+msgstr "إضافة مرشح"
 
 #: frontend/src/components/Controls/Grid.vue:321
 msgid "Add Row"
@@ -241,15 +241,15 @@ msgstr "إضافة صف"
 #: frontend/src/components/FieldLayoutEditor.vue:200
 #: frontend/src/components/SidePanelLayoutEditor.vue:130
 msgid "Add Section"
-msgstr ""
+msgstr "إضافة قسم"
 
 #: frontend/src/components/SortBy.vue:148
 msgid "Add Sort"
-msgstr ""
+msgstr "إضافة ترتيب"
 
 #: frontend/src/components/FieldLayoutEditor.vue:62
 msgid "Add Tab"
-msgstr ""
+msgstr "إضافة تبويب"
 
 #. Label of the add_weekly_holidays_section (Section Break) field in DocType
 #. 'CRM Holiday List'
@@ -419,7 +419,7 @@ msgstr ""
 
 #: frontend/src/pages/MobileContact.vue:263
 msgid "Are you sure you want to delete this contact?"
-msgstr ""
+msgstr "هل أنت متأكد من أنك تريد حذف جهة الاتصال هذه؟"
 
 #: frontend/src/pages/MobileOrganization.vue:264
 msgid "Are you sure you want to delete this organization?"
@@ -439,7 +439,7 @@ msgstr "هل أنت متأكد أنك تريد تسجيل الدخول إلى ل
 
 #: crm/fcrm/doctype/erpnext_crm_settings/erpnext_crm_settings.js:9
 msgid "Are you sure you want to reset 'Create Quotation from CRM Deal' Form Script?"
-msgstr ""
+msgstr "هل أنت متأكد من أنك تريد إعادة تعيين 'إنشاء عرض أسعار من صفقة CRM' سكريبت النموذج؟"
 
 #: frontend/src/components/Settings/General/GeneralSettings.vue:137
 msgid "Are you sure you want to set the currency as {0}? This cannot be changed later."
@@ -522,7 +522,7 @@ msgstr ""
 
 #: crm/api/dashboard.py:464
 msgid "Average time taken from lead creation to deal closure"
-msgstr ""
+msgstr "متوسط الوقت من إنشاء العميل المحتمل إلى إغلاق الصفقة"
 
 #: frontend/src/components/Dashboard/AddChartModal.vue:81
 msgid "Avg deal value"
@@ -538,7 +538,7 @@ msgstr ""
 
 #: frontend/src/components/Dashboard/AddChartModal.vue:83
 msgid "Avg time to close a lead"
-msgstr ""
+msgstr "متوسط الوقت لإغلاق العميل المحتمل"
 
 #: frontend/src/components/Dashboard/AddChartModal.vue:80
 msgid "Avg won deal value"
@@ -546,11 +546,11 @@ msgstr ""
 
 #: crm/api/dashboard.py:410
 msgid "Avg. deal value"
-msgstr ""
+msgstr "متوسط قيمة الصفقات"
 
 #: crm/api/dashboard.py:237
 msgid "Avg. ongoing deal value"
-msgstr ""
+msgstr "متوسط قيمة الصفقات الجارية"
 
 #: crm/api/dashboard.py:517
 msgid "Avg. time to close a deal"
@@ -559,6 +559,30 @@ msgstr "متوسط الوقت لإغلاق الصفقة"
 #: crm/api/dashboard.py:463
 msgid "Avg. time to close a lead"
 msgstr "متوسط الوقت لإغلاق العميل المحتمل"
+
+#: crm/api/dashboard.py:465
+msgid " days"
+msgstr " أيام"
+
+#: frontend/src/pages/Dashboard.vue:207
+msgid "Last 7 Days"
+msgstr "آخر 7 أيام"
+
+#: frontend/src/pages/Dashboard.vue:214
+msgid "Last 30 Days"
+msgstr "آخر 30 يوم"
+
+#: frontend/src/pages/Dashboard.vue:221
+msgid "Last 60 Days"
+msgstr "آخر 60 يوم"
+
+#: frontend/src/pages/Dashboard.vue:228
+msgid "Last 90 Days"
+msgstr "آخر 90 يوم"
+
+#: frontend/src/pages/Dashboard.vue:235
+msgid "Custom Range"
+msgstr "نطاق مخصص"
 
 #: crm/api/dashboard.py:353
 msgid "Avg. won deal value"
@@ -609,7 +633,7 @@ msgstr ""
 
 #: frontend/src/components/Modals/EditValueModal.vue:2
 msgid "Bulk Edit"
-msgstr ""
+msgstr "تعديل مجمع"
 
 #. Option for the 'Status' (Select) field in DocType 'CRM Call Log'
 #: crm/fcrm/doctype/crm_call_log/crm_call_log.json
@@ -630,28 +654,28 @@ msgstr ""
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_communication_status/crm_communication_status.json
 msgid "CRM Communication Status"
-msgstr ""
+msgstr "حالة التواصل CRM"
 
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_contacts/crm_contacts.json
 msgid "CRM Contacts"
-msgstr ""
+msgstr "جهات الاتصال CRM"
 
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_dashboard/crm_dashboard.json
 #: frontend/src/pages/Dashboard.vue:318
 msgid "CRM Dashboard"
-msgstr ""
+msgstr "لوحة تحكم CRM"
 
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_deal/crm_deal.json
 msgid "CRM Deal"
-msgstr ""
+msgstr "صفقة CRM"
 
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_deal_status/crm_deal_status.json
 msgid "CRM Deal Status"
-msgstr ""
+msgstr "حالة صفقة CRM"
 
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_dropdown_item/crm_dropdown_item.json
@@ -661,7 +685,7 @@ msgstr ""
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_exotel_settings/crm_exotel_settings.json
 msgid "CRM Exotel Settings"
-msgstr ""
+msgstr "إعدادات Exotel CRM"
 
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_fields_layout/crm_fields_layout.json
@@ -676,7 +700,7 @@ msgstr ""
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_global_settings/crm_global_settings.json
 msgid "CRM Global Settings"
-msgstr ""
+msgstr "الإعدادات العامة لـ CRM"
 
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_holiday/crm_holiday.json
@@ -686,7 +710,7 @@ msgstr ""
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_holiday_list/crm_holiday_list.json
 msgid "CRM Holiday List"
-msgstr ""
+msgstr "قائمة العطلات CRM"
 
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_industry/crm_industry.json
@@ -701,17 +725,17 @@ msgstr ""
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_lead/crm_lead.json
 msgid "CRM Lead"
-msgstr ""
+msgstr "عميل محتمل CRM"
 
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_lead_source/crm_lead_source.json
 msgid "CRM Lead Source"
-msgstr ""
+msgstr "مصدر العميل المحتمل CRM"
 
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_lead_status/crm_lead_status.json
 msgid "CRM Lead Status"
-msgstr ""
+msgstr "حالة العميل المحتمل CRM"
 
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_lost_reason/crm_lost_reason.json
@@ -726,7 +750,7 @@ msgstr ""
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_organization/crm_organization.json
 msgid "CRM Organization"
-msgstr ""
+msgstr "مؤسسة CRM"
 
 #. Label of a shortcut in the Frappe CRM Workspace
 #: crm/fcrm/workspace/frappe_crm/frappe_crm.json
@@ -756,17 +780,17 @@ msgstr ""
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_service_level_priority/crm_service_level_priority.json
 msgid "CRM Service Level Priority"
-msgstr ""
+msgstr "أولوية مستوى الخدمة CRM"
 
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_status_change_log/crm_status_change_log.json
 msgid "CRM Status Change Log"
-msgstr ""
+msgstr "سجل تغيير الحالة CRM"
 
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_task/crm_task.json
 msgid "CRM Task"
-msgstr ""
+msgstr "مهمة CRM"
 
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_telephony_agent/crm_telephony_agent.json
@@ -786,12 +810,12 @@ msgstr ""
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_twilio_settings/crm_twilio_settings.json
 msgid "CRM Twilio Settings"
-msgstr ""
+msgstr "إعدادات Twilio CRM"
 
 #. Name of a DocType
 #: crm/fcrm/doctype/crm_view_settings/crm_view_settings.json
 msgid "CRM View Settings"
-msgstr ""
+msgstr "إعدادات عرض CRM"
 
 #: frontend/src/components/Settings/General/GeneralSettings.vue:47
 msgid "CRM currency for all monetary values. Once set, cannot be edited."
@@ -889,7 +913,7 @@ msgstr "التقاط"
 
 #: frontend/src/components/Layouts/AppSidebar.vue:556
 msgid "Capturing leads"
-msgstr ""
+msgstr "جمع العملاء المحتملين"
 
 #: frontend/src/components/Layouts/AppSidebar.vue:485
 msgid "Change"
@@ -933,7 +957,7 @@ msgstr ""
 
 #: frontend/src/components/Modals/DealModal.vue:45
 msgid "Choose Existing Contact"
-msgstr ""
+msgstr "اختر جهة اتصال موجودة"
 
 #: frontend/src/components/Modals/DealModal.vue:38
 msgid "Choose Existing Organization"
@@ -972,12 +996,12 @@ msgstr "أغلق"
 
 #: crm/fcrm/doctype/crm_deal/crm_deal.py:163
 msgid "Close Date is required."
-msgstr ""
+msgstr "تاريخ الإغلاق مطلوب."
 
 #. Label of the closed_date (Date) field in DocType 'CRM Deal'
 #: crm/fcrm/doctype/crm_deal/crm_deal.json
 msgid "Closed Date"
-msgstr ""
+msgstr "تاريخ الإغلاق"
 
 #: frontend/src/components/Layouts/AppSidebar.vue:107
 msgid "Collapse"
@@ -1101,11 +1125,11 @@ msgstr "اتصال"
 
 #: crm/fcrm/doctype/crm_lead/crm_lead.py:212
 msgid "Contact Already Exists"
-msgstr ""
+msgstr "جهة الاتصال موجودة بالفعل"
 
 #: frontend/src/components/Modals/AboutModal.vue:77
 msgid "Contact Support"
-msgstr ""
+msgstr "اتصل بالدعم"
 
 #: frontend/src/components/Modals/EditValueModal.vue:20
 msgid "Contact Us"
@@ -1113,23 +1137,23 @@ msgstr "اتصل بنا"
 
 #: frontend/src/pages/Deal.vue:686 frontend/src/pages/MobileDeal.vue:567
 msgid "Contact added"
-msgstr ""
+msgstr "تم إضافة جهة الاتصال"
 
 #: frontend/src/pages/Deal.vue:676 frontend/src/pages/MobileDeal.vue:557
 msgid "Contact already added"
-msgstr ""
+msgstr "تم إضافة جهة الاتصال بالفعل"
 
 #: crm/fcrm/doctype/crm_lead/crm_lead.py:211
 msgid "Contact already exists with {0}"
-msgstr ""
+msgstr "جهة الاتصال موجودة بالفعل مع {0}"
 
 #: frontend/src/pages/Contact.vue:282 frontend/src/pages/MobileContact.vue:255
 msgid "Contact image updated"
-msgstr ""
+msgstr "تم تحديث صورة جهة الاتصال"
 
 #: frontend/src/pages/Deal.vue:697 frontend/src/pages/MobileDeal.vue:578
 msgid "Contact removed"
-msgstr ""
+msgstr "تم إزالة جهة الاتصال"
 
 #: frontend/src/pages/Contact.vue:437 frontend/src/pages/Contact.vue:450
 #: frontend/src/pages/Contact.vue:463 frontend/src/pages/Contact.vue:473
@@ -1138,7 +1162,7 @@ msgstr ""
 #: frontend/src/pages/MobileContact.vue:461
 #: frontend/src/pages/MobileContact.vue:471
 msgid "Contact updated"
-msgstr ""
+msgstr "تم تحديث جهة الاتصال"
 
 #. Label of the contacts_tab (Tab Break) field in DocType 'CRM Deal'
 #. Label of the contacts (Table) field in DocType 'CRM Deal'
@@ -1148,7 +1172,7 @@ msgstr ""
 #: frontend/src/pages/Contact.vue:237 frontend/src/pages/MobileContact.vue:215
 #: frontend/src/pages/MobileOrganization.vue:334
 msgid "Contacts"
-msgstr ""
+msgstr "جهات الاتصال"
 
 #. Label of the content (Text Editor) field in DocType 'FCRM Note'
 #: crm/fcrm/doctype/fcrm_note/fcrm_note.json
@@ -1170,7 +1194,7 @@ msgstr "نوع المحتوى"
 #: frontend/src/components/Settings/EmailTemplate/NewEmailTemplate.vue:165
 #: frontend/src/components/Settings/EmailTemplate/NewEmailTemplate.vue:169
 msgid "Content is required"
-msgstr ""
+msgstr "المحتوى مطلوب"
 
 #: frontend/src/components/Layouts/AppSidebar.vue:375
 #: frontend/src/components/ListBulkActions.vue:88
@@ -1182,14 +1206,14 @@ msgstr ""
 #: frontend/src/components/Layouts/AppSidebar.vue:366
 #: frontend/src/components/Layouts/AppSidebar.vue:374
 msgid "Convert lead to deal"
-msgstr ""
+msgstr "تحويل العميل المحتمل إلى صفقة"
 
 #: frontend/src/components/ListBulkActions.vue:80
 #: frontend/src/components/ListBulkActions.vue:195
 #: frontend/src/components/Modals/ConvertToDealModal.vue:19
 #: frontend/src/pages/Lead.vue:53 frontend/src/pages/MobileLead.vue:107
 msgid "Convert to Deal"
-msgstr ""
+msgstr "تحويل إلى صفقة"
 
 #. Label of the converted (Check) field in DocType 'CRM Lead'
 #: crm/fcrm/doctype/crm_lead/crm_lead.json
@@ -1272,7 +1296,7 @@ msgstr "إنشاء مهمة"
 #: frontend/src/components/Modals/ViewModal.vue:9
 #: frontend/src/components/ViewControls.vue:687
 msgid "Create View"
-msgstr ""
+msgstr "إنشاء عرض"
 
 #. Label of the create_customer_on_status_change (Check) field in DocType
 #. 'ERPNext CRM Settings'
@@ -1282,11 +1306,11 @@ msgstr ""
 
 #: frontend/src/components/Modals/CallLogDetailModal.vue:152
 msgid "Create lead"
-msgstr ""
+msgstr "إنشاء عميل محتمل"
 
 #: frontend/src/components/Layouts/AppSidebar.vue:344
 msgid "Create your first lead"
-msgstr ""
+msgstr "أنشئ عميلك المحتمل الأول"
 
 #: frontend/src/components/Layouts/AppSidebar.vue:414
 msgid "Create your first note"
@@ -1456,7 +1480,7 @@ msgstr "الصفقات حسب الإقليم"
 #: frontend/src/components/Settings/EmailTemplate/EditEmailTemplate.vue:115
 #: frontend/src/components/Settings/EmailTemplate/NewEmailTemplate.vue:115
 msgid "Dear {{ lead_name }}, \\n\\nThis is a reminder for the payment of {{ grand_total }}. \\n\\nThanks, \\nFrappé"
-msgstr ""
+msgstr "عزيزي {{ lead_name }}، \\n\\nهذا تذكير بدفع مبلغ {{ grand_total }}. \\n\\nشكراً، \\nفرابي"
 
 #. Label of the default (Check) field in DocType 'CRM Service Level Agreement'
 #: crm/fcrm/doctype/crm_service_level_agreement/crm_service_level_agreement.json
@@ -1558,7 +1582,7 @@ msgstr ""
 #: frontend/src/components/ViewControls.vue:1157
 #: frontend/src/components/ViewControls.vue:1165
 msgid "Delete View"
-msgstr ""
+msgstr "حذف العرض"
 
 #: frontend/src/components/DeleteLinkedDocModal.vue:65
 msgid "Delete all"
@@ -1571,7 +1595,7 @@ msgstr ""
 
 #: frontend/src/pages/MobileContact.vue:262
 msgid "Delete contact"
-msgstr ""
+msgstr "حذف جهة الاتصال"
 
 #: frontend/src/components/DeleteLinkedDocModal.vue:229
 msgid "Delete linked item"
@@ -1670,15 +1694,15 @@ msgstr "نوع الوثيقة"
 
 #: crm/api/activities.py:19
 msgid "Document not found"
-msgstr ""
+msgstr "المستند غير موجود"
 
 #: frontend/src/data/document.js:23
 msgid "Document updated successfully"
-msgstr ""
+msgstr "تم تحديث المستند بنجاح"
 
 #: frontend/src/components/Modals/AboutModal.vue:62
 msgid "Documentation"
-msgstr ""
+msgstr "الوثائق"
 
 #. Option for the 'Status' (Select) field in DocType 'CRM Task'
 #: crm/fcrm/doctype/crm_task/crm_task.json
@@ -1723,7 +1747,7 @@ msgstr "مكررة"
 
 #: frontend/src/components/Modals/ViewModal.vue:8
 msgid "Duplicate View"
-msgstr ""
+msgstr "تكرار العرض"
 
 #: frontend/src/components/Settings/EmailTemplate/NewEmailTemplate.vue:10
 msgid "Duplicate template"
@@ -1821,7 +1845,7 @@ msgstr ""
 
 #: frontend/src/components/Modals/ViewModal.vue:6
 msgid "Edit View"
-msgstr ""
+msgstr "تعديل العرض"
 
 #: frontend/src/components/Modals/CallLogDetailModal.vue:19
 msgid "Edit note"
@@ -1885,7 +1909,7 @@ msgstr ""
 
 #: frontend/src/components/EmailEditor.vue:206
 msgid "Email from Lead"
-msgstr ""
+msgstr "بريد إلكتروني من العميل المحتمل"
 
 #: frontend/src/components/Layouts/AppSidebar.vue:552
 msgid "Email template"
@@ -1977,23 +2001,23 @@ msgstr "تساوي"
 
 #: frontend/src/components/Modals/ConvertToDealModal.vue:185
 msgid "Error converting to deal: {0}"
-msgstr ""
+msgstr "خطأ في تحويل إلى صفقة: {0}"
 
 #: frontend/src/pages/MobileDeal.vue:392
 msgid "Error updating deal"
-msgstr ""
+msgstr "خطأ في تحديث الصفقة"
 
 #: frontend/src/pages/Deal.vue:517
 msgid "Error updating deal: {0}"
-msgstr ""
+msgstr "خطأ في تحديث الصفقة: {0}"
 
 #: frontend/src/data/document.js:26
 msgid "Error updating document"
-msgstr ""
+msgstr "خطأ في تحديث المستند"
 
 #: frontend/src/pages/Lead.vue:399
 msgid "Error updating lead"
-msgstr ""
+msgstr "خطأ في تحديث العميل المحتمل"
 
 #: crm/fcrm/doctype/erpnext_crm_settings/erpnext_crm_settings.py:261
 msgid "Error while creating customer in ERPNext, check error log for more details"
@@ -2082,7 +2106,7 @@ msgstr "تصدير"
 
 #: frontend/src/components/ViewControls.vue:282
 msgid "Export All {0} Record(s)"
-msgstr ""
+msgstr "تصدير جميع {0} سجل(ات)"
 
 #: frontend/src/components/ViewControls.vue:264
 msgid "Export Type"
@@ -2109,11 +2133,11 @@ msgstr "باءت بالفشل"
 
 #: frontend/src/components/Modals/AddExistingUserModal.vue:109
 msgid "Failed to add users"
-msgstr ""
+msgstr "فشل في إضافة المستخدمين"
 
 #: crm/integrations/twilio/api.py:130
 msgid "Failed to capture Twilio recording"
-msgstr ""
+msgstr "فشل في التقاط تسجيل Twilio"
 
 #: frontend/src/components/Settings/EmailAdd.vue:145
 msgid "Failed to create email account, Invalid credentials"
@@ -2177,7 +2201,7 @@ msgstr ""
 
 #: frontend/src/components/FilesUploader/FilesUploaderArea.vue:333
 msgid "File \"{0}\" was skipped because of invalid file type"
-msgstr ""
+msgstr "تم تخطي الملف \"{0}\" بسبب نوع ملف غير صالح"
 
 #: frontend/src/components/FilesUploader/FilesUploaderArea.vue:354
 msgid "File \"{0}\" was skipped because only {1} uploads are allowed"
@@ -2502,7 +2526,7 @@ msgstr ""
 
 #: frontend/src/components/Activities/CallArea.vue:35
 msgid "Inbound Call"
-msgstr ""
+msgstr "مكالمة واردة"
 
 #: frontend/src/components/Settings/EmailAccountCard.vue:45
 msgid "Inbox"
@@ -2781,36 +2805,36 @@ msgstr ""
 #: frontend/src/components/Telephony/ExotelCallUI.vue:205
 #: frontend/src/pages/Tasks.vue:130
 msgid "Lead"
-msgstr "مبادرة البيع"
+msgstr "عميل محتمل"
 
 #. Label of the lead_details_tab (Tab Break) field in DocType 'CRM Deal'
 #: crm/fcrm/doctype/crm_deal/crm_deal.json
 msgid "Lead Details"
-msgstr "تفاصيل الزبون المحتمل"
+msgstr "تفاصيل العميل المحتمل"
 
 #. Label of the lead_name (Data) field in DocType 'CRM Deal'
 #: crm/fcrm/doctype/crm_deal/crm_deal.json
 msgid "Lead Name"
-msgstr "اسم الزبون المحتمل"
+msgstr "اسم العميل المحتمل"
 
 #. Label of the lead_owner (Link) field in DocType 'CRM Lead'
 #: crm/fcrm/doctype/crm_lead/crm_lead.json
 msgid "Lead Owner"
-msgstr "مالك الزبون المحتمل"
+msgstr "مالك العميل المحتمل"
 
 #: crm/fcrm/doctype/crm_lead/crm_lead.py:73
 msgid "Lead Owner cannot be same as the Lead Email Address"
-msgstr ""
+msgstr "لا يمكن أن يكون مالك العميل المحتمل هو نفسه عنوان البريد الإلكتروني للعميل المحتمل"
 
 #. Label of a shortcut in the Frappe CRM Workspace
 #: crm/fcrm/workspace/frappe_crm/frappe_crm.json
 msgid "Lead Sources"
-msgstr ""
+msgstr "مصادر العملاء المحتملين"
 
 #. Label of a shortcut in the Frappe CRM Workspace
 #: crm/fcrm/workspace/frappe_crm/frappe_crm.json
 msgid "Lead Statuses"
-msgstr ""
+msgstr "حالات العملاء المحتملين"
 
 #: crm/api/dashboard.py:935
 msgid "Lead generation channel analysis"
@@ -2822,13 +2846,13 @@ msgstr "خط أنابيب تحويل العملاء المحتملين إلى ص
 
 #: frontend/src/pages/Lead.vue:395 frontend/src/pages/MobileLead.vue:282
 msgid "Lead updated successfully"
-msgstr ""
+msgstr "تم تحديث العميل المحتمل بنجاح"
 
 #. Label of a shortcut in the Frappe CRM Workspace
 #: crm/fcrm/workspace/frappe_crm/frappe_crm.json
 #: frontend/src/pages/Lead.vue:414 frontend/src/pages/MobileLead.vue:301
 msgid "Leads"
-msgstr ""
+msgstr "العملاء المحتملين"
 
 #: crm/api/dashboard.py:934
 #: frontend/src/components/Dashboard/AddChartModal.vue:106
@@ -2964,6 +2988,14 @@ msgstr ""
 #: frontend/src/components/ViewControls.vue:1146
 msgid "Make Public"
 msgstr ""
+
+#: frontend/src/components/FieldLayout/Field.vue:346
+msgid "Select {0}"
+msgstr "اختر {0}"
+
+#: frontend/src/components/FieldLayout/Field.vue:348
+msgid "Enter {0}"
+msgstr "أدخل {0}"
 
 #: frontend/src/components/Activities/Activities.vue:799
 #: frontend/src/components/Activities/ActivityHeader.vue:142
@@ -3237,7 +3269,7 @@ msgstr "رسالة واتس اب جديدة"
 #: frontend/src/components/Modals/ConvertToDealModal.vue:81
 #: frontend/src/pages/MobileLead.vue:165
 msgid "New contact will be created based on the person's details"
-msgstr ""
+msgstr "سيتم إنشاء جهة اتصال جديدة بناءً على تفاصيل الشخص"
 
 #: frontend/src/components/Modals/ConvertToDealModal.vue:56
 #: frontend/src/pages/MobileLead.vue:139
@@ -3303,7 +3335,7 @@ msgstr "لا يوجد"
 #: frontend/src/components/Modals/SidePanelModal.vue:51
 #: frontend/src/pages/Deal.vue:292 frontend/src/pages/MobileDeal.vue:213
 msgid "No contacts added"
-msgstr ""
+msgstr "لم يتم إضافة جهات اتصال"
 
 #: frontend/src/pages/Deal.vue:107 frontend/src/pages/Lead.vue:158
 msgid "No email set"
@@ -3332,7 +3364,7 @@ msgstr ""
 
 #: frontend/src/pages/Deal.vue:731
 msgid "No primary contact set"
-msgstr ""
+msgstr "لم يتم تعيين جهة اتصال أساسية"
 
 #: frontend/src/components/Controls/MultiSelectEmailInput.vue:72
 #: frontend/src/components/Controls/MultiSelectUserInput.vue:72
@@ -3424,19 +3456,19 @@ msgstr "لم يتم الحفظ"
 
 #: crm/fcrm/doctype/crm_deal/crm_deal.py:262
 msgid "Not allowed to add contact to Deal"
-msgstr ""
+msgstr "غير مسموح بإضافة جهة اتصال إلى الصفقة"
 
 #: crm/fcrm/doctype/crm_lead/crm_lead.py:408
 msgid "Not allowed to convert Lead to Deal"
-msgstr ""
+msgstr "غير مسموح بتحويل العميل المحتمل إلى صفقة"
 
 #: crm/fcrm/doctype/crm_deal/crm_deal.py:273
 msgid "Not allowed to remove contact from Deal"
-msgstr ""
+msgstr "غير مسموح بإزالة جهة اتصال من الصفقة"
 
 #: crm/fcrm/doctype/crm_deal/crm_deal.py:284
 msgid "Not allowed to set primary contact for Deal"
-msgstr ""
+msgstr "غير مسموح بتعيين جهة اتصال أساسية للصفقة"
 
 #: frontend/src/pages/Deal.vue:458 frontend/src/pages/Lead.vue:362
 msgid "Not permitted"
@@ -3546,7 +3578,7 @@ msgstr ""
 #: frontend/src/components/Modals/NoteModal.vue:19
 #: frontend/src/components/Modals/TaskModal.vue:26
 msgid "Open Lead"
-msgstr ""
+msgstr "عميل محتمل مفتوح"
 
 #: crm/fcrm/doctype/crm_deal/crm_deal.js:6
 #: crm/fcrm/doctype/crm_lead/crm_lead.js:6
@@ -3570,7 +3602,7 @@ msgstr "خيارات"
 
 #: frontend/src/pages/Welcome.vue:40
 msgid "Or create leads manually"
-msgstr ""
+msgstr "أو أنشئ العملاء المحتملين يدوياً"
 
 #. Label of the order_by_tab (Tab Break) field in DocType 'CRM View Settings'
 #. Label of the order_by (Code) field in DocType 'CRM View Settings'
@@ -3635,7 +3667,7 @@ msgstr "بدلات أخرى"
 
 #: frontend/src/components/Activities/CallArea.vue:36
 msgid "Outbound Call"
-msgstr ""
+msgstr "مكالمة صادرة"
 
 #. Option for the 'Type' (Select) field in DocType 'CRM Call Log'
 #: crm/fcrm/doctype/crm_call_log/crm_call_log.json
@@ -3755,7 +3787,7 @@ msgstr ""
 #: frontend/src/components/Modals/ConvertToDealModal.vue:145
 #: frontend/src/pages/MobileLead.vue:440
 msgid "Please select an existing contact"
-msgstr ""
+msgstr "يرجى اختيار جهة اتصال موجودة"
 
 #: frontend/src/components/Modals/ConvertToDealModal.vue:150
 #: frontend/src/pages/MobileLead.vue:445
@@ -3802,7 +3834,7 @@ msgstr ""
 
 #: frontend/src/pages/Deal.vue:708 frontend/src/pages/MobileDeal.vue:589
 msgid "Primary contact set"
-msgstr ""
+msgstr "تم تعيين جهة الاتصال الأساسية"
 
 #. Label of the priorities (Table) field in DocType 'CRM Service Level
 #. Agreement'
@@ -4283,11 +4315,11 @@ msgstr ""
 
 #: frontend/src/components/ViewControls.vue:667
 msgid "Saved Views"
-msgstr ""
+msgstr "العروض المحفوظة"
 
 #: frontend/src/components/Layouts/AppSidebar.vue:564
 msgid "Saved view"
-msgstr ""
+msgstr "عرض محفوظ"
 
 #: frontend/src/components/Telephony/TaskPanel.vue:8
 msgid "Schedule a task..."
@@ -4374,7 +4406,7 @@ msgstr ""
 
 #: frontend/src/pages/Deal.vue:665 frontend/src/pages/MobileDeal.vue:546
 msgid "Set as Primary Contact"
-msgstr ""
+msgstr "تعيين كجهة اتصال أساسية"
 
 #: frontend/src/components/ViewControls.vue:1123
 msgid "Set as default"
@@ -4479,7 +4511,7 @@ msgstr "عناصر الشريط الجانبي"
 #. Agreement'
 #: crm/fcrm/doctype/crm_service_level_agreement/crm_service_level_agreement.json
 msgid "Simple Python Expression, Example: doc.status == 'Open' and doc.lead_source == 'Ads'"
-msgstr ""
+msgstr "تعبير Python بسيط، مثال: doc.status == 'Open' and doc.lead_source == 'Ads'"
 
 #: frontend/src/components/SortBy.vue:10 frontend/src/components/SortBy.vue:22
 #: frontend/src/components/SortBy.vue:240
@@ -4538,7 +4570,7 @@ msgstr "بداية الوقت"
 
 #: frontend/src/pages/Welcome.vue:21
 msgid "Start with sample 10 leads"
-msgstr ""
+msgstr "ابدأ بعينة من 10 عملاء محتملين"
 
 #. Label of the status (Select) field in DocType 'CRM Call Log'
 #. Label of the status (Data) field in DocType 'CRM Communication Status'
@@ -4610,7 +4642,7 @@ msgstr ""
 
 #: frontend/src/pages/Welcome.vue:32
 msgid "Sync your contacts,email and calenders"
-msgstr ""
+msgstr "مزامنة جهات الاتصال والبريد الإلكتروني والتقويمات"
 
 #. Name of a role
 #. Option for the 'Role' (Select) field in DocType 'CRM Invitation'
@@ -4724,13 +4756,13 @@ msgstr ""
 
 #. Description of the 'Exchange Rate' (Float) field in DocType 'CRM Deal'
 #: crm/fcrm/doctype/crm_deal/crm_deal.json
-msgid "The rate used to convert the deal’s currency to your crm's base currency (set in CRM Settings). It is set once when the currency is first added and doesn't change automatically."
+msgid "The rate used to convert the deal's currency to your crm's base currency (set in CRM Settings). It is set once when the currency is first added and doesn't change automatically."
 msgstr ""
 
 #. Description of the 'Exchange Rate' (Float) field in DocType 'CRM
 #. Organization'
 #: crm/fcrm/doctype/crm_organization/crm_organization.json
-msgid "The rate used to convert the organization’s currency to your crm's base currency (set in CRM Settings). It is set once when the currency is first added and doesn't change automatically."
+msgid "The rate used to convert the organization's currency to your crm's base currency (set in CRM Settings). It is set once when the currency is first added and doesn't change automatically."
 msgstr ""
 
 #: crm/fcrm/doctype/crm_service_level_agreement/crm_service_level_agreement.js:14
@@ -4877,7 +4909,7 @@ msgstr "إجمالي العملاء المحتملين"
 
 #: crm/api/dashboard.py:124
 msgid "Total number of leads"
-msgstr ""
+msgstr "إجمالي عدد العملاء المحتملين"
 
 #: crm/api/dashboard.py:182
 msgid "Total number of non won/lost deals"
@@ -5149,7 +5181,7 @@ msgstr ""
 
 #: frontend/src/pages/Welcome.vue:4
 msgid "Welcome {0}, lets add your first lead"
-msgstr ""
+msgstr "مرحباً {0}، دعنا نضيف عميلك المحتمل الأول"
 
 #. Option for the 'Type' (Select) field in DocType 'CRM Notification'
 #: crm/fcrm/doctype/crm_notification/crm_notification.json
@@ -5243,7 +5275,7 @@ msgstr "تمت إزالة واجبك في {0} {1} بواسطة {2}"
 
 #: frontend/src/components/Activities/CommentArea.vue:9
 msgid "added a"
-msgstr ""
+msgstr "أضاف"
 
 #. Option for the 'Color' (Select) field in DocType 'CRM Deal Status'
 #. Option for the 'Color' (Select) field in DocType 'CRM Lead Status'
@@ -5276,7 +5308,7 @@ msgstr "أزرق"
 
 #: frontend/src/components/Activities/Activities.vue:232
 msgid "changes from"
-msgstr ""
+msgstr "التغييرات من"
 
 #: frontend/src/components/Activities/CommentArea.vue:11
 msgid "comment"
@@ -5315,11 +5347,39 @@ msgstr ""
 
 #: frontend/src/components/Activities/CallArea.vue:16
 msgid "has made a call"
-msgstr ""
+msgstr "أجرى مكالمة"
 
 #: frontend/src/components/Activities/CallArea.vue:15
 msgid "has reached out"
-msgstr ""
+msgstr "تواصل"
+
+#: added manually for completeness
+msgid "Removed"
+msgstr "تمت الإزالة"
+
+#: added manually for completeness (used in Activities timeline)
+msgid "added"
+msgstr "أضاف"
+
+#: added manually for completeness (used in Activities timeline)
+msgid "removed"
+msgstr "أزال"
+
+#: added manually for completeness (used in Activities timeline)
+msgid "changed"
+msgstr "غيّر"
+
+#: added manually for completeness (used in Activities timeline)
+msgid "as"
+msgstr "كـ"
+
+#: added manually for completeness (used in Activities timeline)
+msgid "from"
+msgstr "من"
+
+#: added manually for completeness (used in Activities timeline)
+msgid "value"
+msgstr "القيمة"
 
 #: frontend/src/components/Settings/EmailAdd.vue:36
 #: frontend/src/components/Settings/EmailEdit.vue:25
@@ -5349,6 +5409,10 @@ msgstr ""
 #: frontend/src/utils/index.js:154
 msgid "in {0} days"
 msgstr "في {0} أيام"
+
+#: frontend/src/utils/index.js:154
+msgid "{0} days"
+msgstr "{0} أيام"
 
 #: frontend/src/utils/index.js:154
 msgid "days"
@@ -5516,6 +5580,18 @@ msgstr ""
 msgid "{0} d"
 msgstr "{0} د"
 
+#: frontend/src/utils/index.js:119
+msgid "{0} m"
+msgstr "{0} م"
+
+#: frontend/src/utils/index.js:121
+msgid "{0} h"
+msgstr "{0} ح"
+
+#: frontend/src/utils/index.js:123
+msgid "{0} s"
+msgstr "{0} ث"
+
 #: frontend/src/utils/index.js:181
 msgid "{0} days ago"
 msgstr "قبل {0} أيام"
@@ -5596,4 +5672,28 @@ msgstr ""
 #: frontend/src/data/script.js:192
 msgid "⚠️ No row found for idx: {0} in parent field: {1}"
 msgstr ""
+
+#: frontend/src/components/Dashboard/AddChartModal.vue
+msgid "created this lead"
+msgstr "أنشأ هذا العميل المحتمل"
+
+#: Lead Status Options
+msgid "Contacted"
+msgstr "تم الاتصال"
+
+#: Lead Status Options
+msgid "Nurture"
+msgstr "تطوير"
+
+#: Lead Status Options
+msgid "Qualified"
+msgstr "مؤهل"
+
+#: Lead Status Options
+msgid "Unqualified"
+msgstr "غير مؤهل"
+
+#: Lead Status Options
+msgid "Junk"
+msgstr "غير مرغوب"
 
