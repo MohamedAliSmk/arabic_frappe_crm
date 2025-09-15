@@ -1,6 +1,7 @@
 <template>
   <ListView
     :class="$attrs.class"
+    class="list-view bg-red-50"
     :columns="reversedColumns"
     :rows="rows"
     :options="{
@@ -17,7 +18,7 @@
     @update:selections="(selections) => emit('selectionsChanged', selections)"
   >
     <ListHeader
-      class="sm:mx-5 mx-3"
+      class="list-header sm:mx-5 mx-3"
       @columnWidthUpdated="emit('columnWidthUpdated')"
     >
       <ListHeaderItem
@@ -25,6 +26,7 @@
         :key="column.key"
         :item="column"
         @columnWidthUpdated="emit('columnWidthUpdated', column)"
+        class="px-4 py-2 text-sm font-semibold"
       >
         <Button
           v-if="column.key == '_liked_by'"
@@ -41,6 +43,7 @@
       :rows="rows"
       v-slot="{ idx, column, item, row }"
       doctype="CRM Lead"
+       class="list-row px-4 py-2"
     >
       <div v-if="column.key === '_assign'" class="flex items-center">
         <MultipleAvatar

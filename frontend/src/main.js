@@ -136,7 +136,7 @@ let globalComponents = {
 let pinia = createPinia()
 
 let app = createApp(App)
-
+app.config.devtools = true
 setConfig('resourceFetcher', frappeRequest)
 app.use(FrappeUI)
 app.use(pinia)

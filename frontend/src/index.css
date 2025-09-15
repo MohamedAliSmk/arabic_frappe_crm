@@ -23,6 +23,65 @@
 	}
 }
 
+html, body {
+  direction: rtl !important;
+  text-align: right !important;
+}
+html[lang="ar"] {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Cairo', 'Tahoma', sans-serif;
+}
+.frappe-ui * {
+    direction: rtl;
+    text-align: right;
+}
+
+
+.list-view {
+  @apply bg-white shadow rounded-2xl border border-gray-200 overflow-hidden;
+}
+
+/* Headers like Odoo */
+.list-header {
+  @apply bg-gray-100 text-gray-800 font-semibold px-4 py-2 border-b border-gray-200;
+}
+
+/* Rows like Odoo cards */
+.list-row {
+  @apply hover:bg-purple-50 transition-all duration-200 ease-in-out cursor-pointer;
+}
+
+/* Buttons */
+.btn {
+  @apply rounded-lg px-3 py-1.5 text-sm font-medium;
+}
+.btn-primary {
+  @apply bg-purple-600 text-white hover:bg-purple-700;
+}
+.btn-ghost {
+  @apply text-gray-500 hover:text-gray-800;
+}
+
+/* Avatars */
+.avatar {
+  @apply rounded-full border border-gray-300;
+}
+
+/* Badges */
+.badge {
+  @apply px-2 py-0.5 rounded-full text-xs font-medium;
+}
+.badge-success {
+  @apply bg-green-100 text-green-800;
+}
+.badge-warning {
+  @apply bg-yellow-100 text-yellow-800;
+}
+.badge-danger {
+  @apply bg-red-100 text-red-800;
+}
+
 /* Global RTL Support */
 [dir="rtl"] {
 	direction: rtl;
@@ -224,4 +283,25 @@ div[class*="odoo-module"],
 	font-family: 'InterVar', sans-serif;
 	direction: ltr;
 	unicode-bidi: embed;
+}
+
+
+/* RTL helpers */
+.rtl-ui {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl-ui .flex {
+  flex-direction: row-reverse;
+}
+
+.rtl-ui .ml-auto {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.rtl-ui .mr-auto {
+  margin-left: auto;
+  margin-right: 0;
 }
