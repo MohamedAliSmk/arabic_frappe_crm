@@ -1,4 +1,6 @@
 <template>
+  <div dir="rtl" class="rtl-ui font-sans bg-gray-50 text-gray-900">
+  <!-- Your ListView component -->
   <ListView
     :class="$attrs.class"
     :columns="columns"
@@ -25,6 +27,7 @@
         :key="column.key"
         :item="column"
         @columnWidthUpdated="emit('columnWidthUpdated', column)"
+          class="uppercase text-xs tracking-wide text-gray-500 font-semibold bg-gray-100 py-2 px-3"
       >
         <Button
           v-if="column.key == '_liked_by'"
@@ -58,7 +61,8 @@
           "
         />
       </div>
-      <ListRowItem v-else :item="item" :align="column.align">
+      <ListRowItem v-else :item="item" :align="column.align"
+       class="hover:bg-gray-100 transition rounded-lg px-3 py-2 cursor-pointer border-b last:border-0">
         <template #prefix>
           <div v-if="column.key === 'status'">
             <IndicatorIcon :class="item.color" />
@@ -86,15 +90,12 @@
           </div>
           <div v-else-if="column.key === '_liked_by'">
             <Button
-              v-if="column.key == '_liked_by'"
-              variant="ghosted"
-              :class="isLiked(item) ? 'fill-red-500' : 'fill-white'"
-              @click.stop.prevent="
-                () => emit('likeDoc', { name: row.name, liked: isLiked(item) })
-              "
-            >
-              <HeartIcon class="h-4 w-4" />
-            </Button>
+  variant="ghosted"
+  class="rounded-full !h-6 !w-6 flex items-center justify-center hover:bg-red-50 transition"
+  :class="isLiked(item) ? 'text-red-500' : 'text-gray-400'"
+>
+  <HeartIcon class="h-4 w-4" />
+</Button>
           </div>
         </template>
         <template #default="{ label }">
@@ -184,16 +185,27 @@
     </ListSelectBanner>
   </ListView>
   <ListFooter
-    v-if="pageLengthCount"
-    class="border-t sm:px-5 px-3 py-2"
-    v-model="pageLengthCount"
-    :options="{
-      rowCount: options.rowCount,
-      totalCount: options.totalCount,
-    }"
-    @loadMore="emit('loadMore')"
-  />
+  v-if="pageLengthCount"
+  class="border-t bg-white sm:px-5 px-3 py-2 flex justify-between items-center text-sm text-gray-600"
+  v-model="pageLengthCount"
+  :options="{
+    rowCount: options.rowCount,
+    totalCount: options.totalCount,
+  }"
+>
+  <template #default="{ loadMore }">
+    <Button
+      variant="outline"
+      class="rounded-lg px-4 py-1 text-sm hover:bg-gray-100"
+      @click="loadMore"
+    >
+      تحميل المزيد
+    </Button>
+  </template>
+</ListFooter>
   <ListBulkActions ref="listBulkActionsRef" v-model="list" doctype="CRM Deal" />
+</div>
+
 </template>
 
 <script setup>

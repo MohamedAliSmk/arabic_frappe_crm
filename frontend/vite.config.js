@@ -35,6 +35,7 @@ const alias = [
     find: '@',
     replacement: path.resolve(__dirname, 'src'),
   },
+  
 
   // App-specific aliases like @helpdesk, @hrms, etc.
   ...apps.map((app) =>
@@ -165,4 +166,29 @@ export default defineConfig({
     // Reduce memory usage during pre-bundling
     force: false,
   },
+
+  server: {
+  port: 8080,
+  proxy: {
+    '/api': {
+       target: "http://erpnext.localhost:8000",
+      changeOrigin: true,
+    },
+    '/assets': {
+       target: "http://erpnext.localhost:8000",
+      changeOrigin: true,
+    },
+    '/files': {
+       target: "http://erpnext.localhost:8000",
+      changeOrigin: true,
+    },
+  },
+  resolve: {
+  alias: {
+    'highlight.js/lib/core.js': 'highlight.js/es/core.js'
+  }
+}
+}
+
 })
+

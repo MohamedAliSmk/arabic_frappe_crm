@@ -1450,7 +1450,7 @@ msgstr "قيمة الصفقة"
 #: frontend/src/pages/MobileDeal.vue:407
 #: frontend/src/pages/MobileOrganization.vue:328
 msgid "Deals"
-msgstr ""
+msgstr "الصفقات"
 
 #: crm/api/dashboard.py:788
 #: frontend/src/components/Dashboard/AddChartModal.vue:97
@@ -3654,7 +3654,7 @@ msgstr ""
 #: frontend/src/pages/MobileOrganization.vue:208
 #: frontend/src/pages/Organization.vue:238
 msgid "Organizations"
-msgstr ""
+msgstr "الجهات"
 
 #: frontend/src/components/Layouts/AppSidebar.vue:570
 msgid "Other features"
@@ -5216,7 +5216,7 @@ msgstr ""
 #: crm/api/dashboard.py:296
 #: frontend/src/components/Dashboard/AddChartModal.vue:79
 msgid "Won deals"
-msgstr "الصفقات المربحة"
+msgstr "الصفقات الرابحة"
 
 #. Label of the workday (Select) field in DocType 'CRM Service Day'
 #: crm/fcrm/doctype/crm_service_day/crm_service_day.json
