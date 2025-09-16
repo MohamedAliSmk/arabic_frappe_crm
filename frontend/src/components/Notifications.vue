@@ -4,10 +4,10 @@
     ref="target"
     class="absolute z-20 h-screen bg-surface-white transition-all duration-300 ease-in-out"
     :style="{
-      'box-shadow': '8px 0px 8px rgba(0, 0, 0, 0.1)',
+      'box-shadow': '-8px 0px 8px rgba(0, 0, 0, 0.1)',
       'max-width': '350px',
       'min-width': '350px',
-      left: 'calc(100% + 1px)',
+      right: 'calc(100% + 1px)',
     }"
   >
     <div class="flex h-screen flex-col text-ink-gray-9">
